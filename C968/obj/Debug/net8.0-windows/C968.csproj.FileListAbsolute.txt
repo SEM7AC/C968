@@ -1,0 +1,17 @@
+C:\Users\cseml\OneDrive\Desktop\C968\C968\bin\Debug\net8.0-windows\C968.exe
+C:\Users\cseml\OneDrive\Desktop\C968\C968\bin\Debug\net8.0-windows\C968.deps.json
+C:\Users\cseml\OneDrive\Desktop\C968\C968\bin\Debug\net8.0-windows\C968.runtimeconfig.json
+C:\Users\cseml\OneDrive\Desktop\C968\C968\bin\Debug\net8.0-windows\C968.dll
+C:\Users\cseml\OneDrive\Desktop\C968\C968\bin\Debug\net8.0-windows\C968.pdb
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.csproj.GenerateResource.cache
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.AssemblyInfoInputs.cache
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.AssemblyInfo.cs
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.csproj.CoreCompileInputs.cache
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.sourcelink.json
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.dll
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\refint\C968.dll
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.pdb
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.genruntimeconfig.cache
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\ref\C968.dll
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.Main_Form.resources

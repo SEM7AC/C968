@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\C968.csproj",
+      "projectUniqueName": "C:\\Users\\cseml\\Source\\Repos\\C968\\C968\\C968.csproj",
       "projectName": "C968",
-      "projectPath": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\C968.csproj",
+      "projectPath": "C:\\Users\\cseml\\Source\\Repos\\C968\\C968\\C968.csproj",
       "packagesPath": "C:\\Users\\cseml\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\obj\\",
+      "outputPath": "C:\\Users\\cseml\\Source\\Repos\\C968\\C968\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,7 +51,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -75,7 +76,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -11,5 +11,17 @@ namespace C968
         {
             this.Close();
         }
+
+        private void btn_parts_add_Click(object sender, EventArgs e)
+        {
+            Add_Part addForm = new();
+            addForm.Show();
+        }
+
+        private void btn_parts_modify_Click(object sender, EventArgs e)
+        {
+            Modify_Part modifyPart = new();
+            modifyPart.Show();
+        }
     }
 }

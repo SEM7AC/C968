@@ -54,3 +54,5 @@ ScaffoldingReadMe.txt
 
 # Azure DevOps
 .tf
+/C968/obj/Debug/net8.0-windows/C968.AssemblyInfo.cs
+/C968/obj/Debug/net8.0-windows/C968.AssemblyInfoInputs.cache

@@ -9,7 +9,7 @@ namespace C968
 {
     public class Product
     {
-        public BindingList<Part> AssociatedParts { get; set; }
+        public BindingList<Part> AssociatedParts { get; set; } = new BindingList<Part>();   
 
         public int ProductID { get; set; }
 
@@ -23,19 +23,21 @@ namespace C968
 
         public int Max { get; set; }
 
-        public void addAssociatedPart(Part)
+        public void addAssociatedPart(Part part)
         {
-            //add later
+            AssociatedParts.Add(part);
         }
 
         public bool removeAssociatedPart(int id)
         {
-            //add later
+            return true; //change this later
         }
 
         public Part lookupAssociatedPart(int id)
+
         { 
             //add later
+            return AssociatedParts[id];
         }
     }
 }

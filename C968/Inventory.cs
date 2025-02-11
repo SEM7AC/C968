@@ -10,45 +10,52 @@ namespace C968
 {
     public class Inventory
     {
-        public BindingList<Product> Products { get; set; }
-        public BindingList<Part> AllParts { get; set; }
+        private static int uniquePartID = 1001; //Unique Part ID counter
+        public BindingList<Product> Products { get; set; } = new BindingList<Product>();
+        public BindingList<Part> AllParts { get; set; } = new BindingList<Part>();
 
-        public void addProduct(Product)
+        public static int GeneratePartID()
         {
-            //add later
+            return uniquePartID++;
+        }
+        public void addProduct(Product product)
+        {
+            
         }
 
         public bool removeProduct(int id)
         {
-            //add later
+            return true; //change later
         }
 
         public Product lookupProduct(int id)
         {
             //add later
+            return Products[id];
         }
 
-        public void updateProduct(int id, Product)
+        public void updateProduct(int id, Product product)
         {
                 //add later
         }
 
-        public void addPart()
+        public void addPart(Part part)
         {
-            //add later
+            AllParts.Add(part);
         }
 
         public bool deletePart(int id)
-        { 
-            //add later
+        {
+            return true; //change later
         }
 
         public Part lookupPart(int id)
         { 
             //add later
+            return AllParts[id];
         }
 
-        public void updatePart(int id, Part)
+        public void updatePart(int id, Part part)
         {
             //add later
         }

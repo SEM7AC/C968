@@ -1,30 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\",
+  "WorkspaceRootPath": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\source\\repos\\c968\\c968\\modify_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:modify_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\onedrive\\desktop\\c968\\c968\\part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\source\\repos\\c968\\c968\\modify_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:modify_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\onedrive\\desktop\\c968\\c968\\inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:inventory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\source\\repos\\c968\\c968\\main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\source\\repos\\c968\\c968\\add_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:add_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\source\\repos\\c968\\c968\\add_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:add_part.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\source\\repos\\c968\\c968\\main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:main_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|c:\\users\\cseml\\onedrive\\desktop\\c968\\c968\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D1F8B8D-A45A-4920-9373-584A0CB90F0D}|C968.csproj|solutionrelative:product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,78 +34,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Add_Part.cs",
-              "DocumentMoniker": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Add_Part.cs",
-              "RelativeDocumentMoniker": "Add_Part.cs",
-              "ToolTip": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Add_Part.cs",
-              "RelativeToolTip": "Add_Part.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Part.cs",
+              "DocumentMoniker": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\Part.cs",
+              "RelativeDocumentMoniker": "Part.cs",
+              "ToolTip": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\Part.cs",
+              "RelativeToolTip": "Part.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T20:15:43.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Modify_Part.cs",
-              "DocumentMoniker": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Modify_Part.cs",
-              "RelativeDocumentMoniker": "Modify_Part.cs",
-              "ToolTip": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Modify_Part.cs",
-              "RelativeToolTip": "Modify_Part.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAywCoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T20:16:00.298Z",
+              "WhenOpened": "2025-02-10T14:44:05.417Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Main_Form.cs",
-              "DocumentMoniker": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Main_Form.cs",
-              "RelativeDocumentMoniker": "Main_Form.cs",
-              "ToolTip": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Main_Form.cs",
-              "RelativeToolTip": "Main_Form.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\Product.cs",
+              "RelativeDocumentMoniker": "Product.cs",
+              "ToolTip": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\Product.cs",
+              "RelativeToolTip": "Product.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T20:11:27.472Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-10T14:28:49.253Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Modify_Part.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Modify_Part.cs",
-              "RelativeDocumentMoniker": "Modify_Part.cs",
-              "ToolTip": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Modify_Part.cs [Design]",
-              "RelativeToolTip": "Modify_Part.cs [Design]",
+              "DocumentIndex": 1,
+              "Title": "Inventory.cs",
+              "DocumentMoniker": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\Inventory.cs",
+              "RelativeDocumentMoniker": "Inventory.cs",
+              "ToolTip": "C:\\Users\\cseml\\OneDrive\\Desktop\\C968\\C968\\Inventory.cs",
+              "RelativeToolTip": "Inventory.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAQwDoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T20:05:11.143Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Main_Form.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Main_Form.cs",
-              "RelativeDocumentMoniker": "Main_Form.cs",
-              "ToolTip": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Main_Form.cs [Design]",
-              "RelativeToolTip": "Main_Form.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T19:13:05.16Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Add_Part.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Add_Part.cs",
-              "RelativeDocumentMoniker": "Add_Part.cs",
-              "ToolTip": "C:\\Users\\cseml\\source\\repos\\C968\\C968\\Add_Part.cs [Design]",
-              "RelativeToolTip": "Add_Part.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-08T19:12:30.457Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-10T14:11:31.754Z"
             }
           ]
         }

@@ -205,6 +205,7 @@
             dg_parts.Name = "dg_parts";
             dg_parts.RowHeadersVisible = false;
             dg_parts.RowHeadersWidth = 51;
+            dg_parts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_parts.Size = new Size(724, 353);
             dg_parts.TabIndex = 16;
             // 

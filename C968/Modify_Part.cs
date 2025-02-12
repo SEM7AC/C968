@@ -12,6 +12,7 @@ namespace C968
 {
     public partial class Modify_Part : Form
     {
+        public Inventory Inventory { get; set; }
         public Modify_Part()
         {
             InitializeComponent();

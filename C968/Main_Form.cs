@@ -26,7 +26,11 @@ namespace C968
 
         private void btn_parts_modify_Click(object sender, EventArgs e)
         {
-            Modify_Part modifyPart = new();
+            Modify_Part modifyPart = new()
+            {
+                Inventory = this.Inventory
+            };
+                
             modifyPart.Show();
         }
     }

@@ -167,78 +167,96 @@
             // 
             // tb_part_add_name
             // 
+            tb_part_add_name.BackColor = Color.Coral;
             tb_part_add_name.BorderStyle = BorderStyle.FixedSingle;
             tb_part_add_name.Location = new Point(200, 136);
             tb_part_add_name.Margin = new Padding(3, 4, 3, 4);
             tb_part_add_name.Name = "tb_part_add_name";
             tb_part_add_name.Size = new Size(194, 27);
             tb_part_add_name.TabIndex = 11;
+            tb_part_add_name.TextChanged += tb_part_add_name_TextChanged;
             // 
             // tb_part_add_inventory
             // 
+            tb_part_add_inventory.BackColor = Color.Coral;
             tb_part_add_inventory.BorderStyle = BorderStyle.FixedSingle;
             tb_part_add_inventory.Location = new Point(200, 176);
             tb_part_add_inventory.Margin = new Padding(3, 4, 3, 4);
             tb_part_add_inventory.Name = "tb_part_add_inventory";
             tb_part_add_inventory.Size = new Size(194, 27);
             tb_part_add_inventory.TabIndex = 12;
+            tb_part_add_inventory.TextChanged += tb_part_add_inventory_TextChanged;
             // 
             // tb_part_add_priceCost
             // 
+            tb_part_add_priceCost.BackColor = Color.Coral;
             tb_part_add_priceCost.BorderStyle = BorderStyle.FixedSingle;
             tb_part_add_priceCost.Location = new Point(200, 215);
             tb_part_add_priceCost.Margin = new Padding(3, 4, 3, 4);
             tb_part_add_priceCost.Name = "tb_part_add_priceCost";
             tb_part_add_priceCost.Size = new Size(194, 27);
             tb_part_add_priceCost.TabIndex = 13;
+            tb_part_add_priceCost.TextChanged += tb_part_add_priceCost_TextChanged;
             // 
             // tb_part_add_max
             // 
+            tb_part_add_max.BackColor = Color.Coral;
             tb_part_add_max.BorderStyle = BorderStyle.FixedSingle;
             tb_part_add_max.Location = new Point(200, 253);
             tb_part_add_max.Margin = new Padding(3, 4, 3, 4);
             tb_part_add_max.Name = "tb_part_add_max";
             tb_part_add_max.Size = new Size(78, 27);
             tb_part_add_max.TabIndex = 14;
+            tb_part_add_max.TextChanged += tb_part_add_max_TextChanged;
             // 
             // tb_part_add_min
             // 
+            tb_part_add_min.BackColor = Color.Coral;
             tb_part_add_min.BorderStyle = BorderStyle.FixedSingle;
             tb_part_add_min.Location = new Point(325, 253);
             tb_part_add_min.Margin = new Padding(3, 4, 3, 4);
             tb_part_add_min.Name = "tb_part_add_min";
             tb_part_add_min.Size = new Size(69, 27);
             tb_part_add_min.TabIndex = 15;
+            tb_part_add_min.TextChanged += tb_part_add_min_TextChanged;
             // 
             // tb_part_add_mi_cn
             // 
+            tb_part_add_mi_cn.BackColor = Color.Coral;
             tb_part_add_mi_cn.BorderStyle = BorderStyle.FixedSingle;
             tb_part_add_mi_cn.Location = new Point(200, 292);
             tb_part_add_mi_cn.Margin = new Padding(3, 4, 3, 4);
             tb_part_add_mi_cn.Name = "tb_part_add_mi_cn";
             tb_part_add_mi_cn.Size = new Size(194, 27);
             tb_part_add_mi_cn.TabIndex = 16;
+            tb_part_add_mi_cn.TextChanged += tb_part_add_mi_cn_TextChanged;
             // 
             // btn_part_add_save
             // 
+            btn_part_add_save.BackColor = Color.Gray;
+            btn_part_add_save.Enabled = false;
+            btn_part_add_save.FlatAppearance.BorderColor = Color.DarkGray;
+            btn_part_add_save.FlatStyle = FlatStyle.Flat;
+            btn_part_add_save.ForeColor = Color.DarkGray;
             btn_part_add_save.Location = new Point(360, 409);
             btn_part_add_save.Margin = new Padding(3, 4, 3, 4);
             btn_part_add_save.Name = "btn_part_add_save";
             btn_part_add_save.Size = new Size(86, 31);
             btn_part_add_save.TabIndex = 17;
             btn_part_add_save.Text = "Save";
-            btn_part_add_save.UseVisualStyleBackColor = true;
+            btn_part_add_save.UseVisualStyleBackColor = false;
             btn_part_add_save.Click += btn_part_save_Click;
             // 
             // btn_part_add_cancel
             // 
+            btn_part_add_cancel.BackColor = SystemColors.ButtonFace;
             btn_part_add_cancel.Location = new Point(453, 409);
             btn_part_add_cancel.Margin = new Padding(3, 4, 3, 4);
             btn_part_add_cancel.Name = "btn_part_add_cancel";
             btn_part_add_cancel.Size = new Size(86, 31);
             btn_part_add_cancel.TabIndex = 18;
             btn_part_add_cancel.Text = "Cancel";
-            btn_part_add_cancel.UseVisualStyleBackColor = true;
+            btn_part_add_cancel.UseVisualStyleBackColor = false;
             btn_part_add_cancel.Click += btn_part_cancel_Click;
             // 
             // Add_Part

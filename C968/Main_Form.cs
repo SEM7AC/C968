@@ -23,7 +23,9 @@ namespace C968
             {
                 Inventory = this.Inventory // Pass the Inventory instance to Add_Part
             };
-            addForm.Show();
+            addForm.ShowDialog();
+            dg_parts.ClearSelection();
+            dg_parts.Refresh();
 
         }
 

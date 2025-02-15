@@ -90,6 +90,7 @@
             btn_parts_search.TabIndex = 5;
             btn_parts_search.Text = "Search";
             btn_parts_search.UseVisualStyleBackColor = true;
+            btn_parts_search.Click += btn_parts_search_Click;
             // 
             // btn_products_search
             // 

@@ -96,6 +96,24 @@ namespace C968
 
         }
 
+        private void btn_parts_search_Click(object sender, EventArgs e)
+        {
+            string find = tb_parts_search.Text.ToLower();
 
+            foreach (DataGridViewRow row in dg_parts.Rows)
+            {
+                Part part = row.DataBoundItem as Part;
+                if (part != null && part.Name.ToLower().Contains(find))
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                }
+            }
+            dg_parts.ClearSelection();
+
+        }
     }
 }

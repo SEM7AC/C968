@@ -14,37 +14,48 @@ namespace C968
         public BindingList<Product> Products { get; set; } = new BindingList<Product>();
         public BindingList<Part> AllParts { get; set; } = new BindingList<Part>();
 
+
+        //Method to increment partID when adding a part to inventory
         public static int GeneratePartID()
         {
-            return uniquePartID++; //starts with 1001 and then increments
+            return uniquePartID++; 
         }
+
+        //NOT IMPLEMENTED YET *******************************************
         public void addProduct(Product product)
         {
 
         }
 
+        //NOT IMPLEMENTED YET *******************************************
         public bool removeProduct(int id)
         {
             return true; //change later
         }
 
+        //NOT IMPLEMENTED YET *******************************************
         public Product lookupProduct(int id)
         {
             //add later
             return Products[id];
         }
 
+        //NOT IMPLEMENTED YET *******************************************
         public void updateProduct(int id, Product product)
         {
             //add later
         }
 
+        
+        //Method for adding a part to AllParts
         public void addPart(Part part)
         {
             AllParts.Add(part);
 
         }
-
+               
+        
+        //Method for deleting a part from AllParts
         public bool deletePart(int id)
         {
             var part = AllParts.FirstOrDefault(p => p.PartID == id);
@@ -56,25 +67,29 @@ namespace C968
             return false;
         }
 
+        //NOT IMPLEMENTED YET *******************************************
         public Part lookupPart(int id)
         {
             //add later
             return AllParts[id];
         }
 
+        //Method used by the modify_part form. Find the part in AllParts using partID
+        //gets the index of the part and then replaces part at that index with modified
+        //part information
         public void updatePart(int id, Part updatedPart)
         {
+            
             var existingPart = AllParts.FirstOrDefault(p => p.PartID == id);
             if (existingPart != null)
             {
-                int index = AllParts.IndexOf(existingPart);
-                AllParts[index] = updatedPart;
+                int index = AllParts.IndexOf(existingPart); //gets index of part
+                AllParts[index] = updatedPart; //replaces modified part info.
             }
         }
 
         //adding specific functions for inhouse and outsourced parts. Still uses add part but moved logic away
         //from add_part form
-
 
         public void addInhousePart(int partID, string name, decimal price, int inventory, int min, int max, int machineID)
         {

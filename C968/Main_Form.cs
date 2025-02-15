@@ -4,7 +4,10 @@ namespace C968
 {
     public partial class Main_Form : Form
     {
+        
         public Inventory Inventory { get; set; } = new Inventory();
+
+
         public Main_Form()
         {
             InitializeComponent();
@@ -12,11 +15,15 @@ namespace C968
             dg_products.DataSource = Inventory.Products;
         }
 
+        //Exits the main_form
         private void btn_exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+
+        //Add_Part form function. Simple and to the point, creates an instance of the form and passes 
+        //ref of the inventory.
         private void btn_parts_add_Click(object sender, EventArgs e)
         {
             Add_Part addForm = new()
@@ -29,6 +36,10 @@ namespace C968
 
         }
 
+
+        //Modify_Part form function. First check to see if a part is selected from the datagridview
+        //create an instance of the form and passes selected part from datagrid view to the form along with
+        //the inventory reference. Lastly use showdialog to ensure the clear selection and refresh work properly.
         private void btn_parts_modify_Click(object sender, EventArgs e)
         {
 
@@ -37,7 +48,7 @@ namespace C968
                 int selectedIndex = dg_parts.SelectedRows[0].Index;
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
 
-                Modify_Part modifyPart = new Modify_Part(selectedPart)
+                Modify_Part modifyPart = new Modify_Part(selectedPart) //pass selected part to the modify_form
                 {
                     Inventory = this.Inventory
                 };
@@ -47,8 +58,6 @@ namespace C968
                 dg_parts.ClearSelection();
                 dg_parts.Refresh();
 
-
-
             }
             else
             {
@@ -57,7 +66,8 @@ namespace C968
 
 
         }
-
+        //Delete Part function, checks for part selection within datagrad and asks for a confirmation
+        //Also gives notification that the part has been deleted or if there was an error
         private void btn_parts_delete_Click(object sender, EventArgs e)
         {
             if (dg_parts.SelectedRows.Count > 0) //are there parts in the datagrid and 1 is selected 
@@ -95,7 +105,11 @@ namespace C968
 
 
         }
-
+        
+        
+        // Search function finds fist part.Name that contains what ever you 
+        // type into the searchbox and changes the background color of the data
+        //grid to match... 
         private void btn_parts_search_Click(object sender, EventArgs e)
         {
             string find = tb_parts_search.Text.ToLower();

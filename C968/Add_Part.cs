@@ -13,13 +13,14 @@ namespace C968
 {
     public partial class Add_Part : Form
     {
+        private int partID;
         public bool saveOK = false;
         public Inventory Inventory { get; set; }
         public Add_Part() //Add_Part constructor
         {
             InitializeComponent();
-            tb_part_add_id.Text = Inventory.GeneratePartID().ToString();
-
+            partID = Inventory.GeneratePartID();
+            tb_part_add_id.Text = partID.ToString();
         }
 
         //Helper for validation code.....
@@ -148,14 +149,15 @@ namespace C968
             {
                 // Save in-house part with machine ID
                 int machineID = int.Parse(mi_cn);
-                Part part = new Inhouse(partID, partName, price, inventory,  min, max, machineID);
-                Inventory.addPart(part);
+
+                Inventory.addInhousePart(partID, partName, price, inventory, min, max, machineID);
+
             }
             else
             {
                 // Save outsourced part with company name
-                Part part = new Outsourced(partID, partName, price, inventory, min, max, mi_cn);
-                Inventory.addPart(part);
+                Inventory.addOutsourcedPart(partID, partName, price, inventory, min, max, mi_cn);
+                
                 
             }
 

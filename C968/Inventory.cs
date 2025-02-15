@@ -20,7 +20,7 @@ namespace C968
         }
         public void addProduct(Product product)
         {
-            
+
         }
 
         public bool removeProduct(int id)
@@ -36,13 +36,13 @@ namespace C968
 
         public void updateProduct(int id, Product product)
         {
-                //add later
+            //add later
         }
 
         public void addPart(Part part)
         {
             AllParts.Add(part);
-            
+
         }
 
         public bool deletePart(int id)
@@ -57,16 +57,39 @@ namespace C968
         }
 
         public Part lookupPart(int id)
-        { 
+        {
             //add later
             return AllParts[id];
         }
 
-        public void updatePart(int id, Part part)
+        public void updatePart(int id, Part updatedPart)
         {
-            //add later
+            var existingPart = AllParts.FirstOrDefault(p => p.PartID == id);
+            if (existingPart != null)
+            {
+                int index = AllParts.IndexOf(existingPart);
+                AllParts[index] = updatedPart;
+            }
         }
 
+        //adding specific functions for inhouse and outsourced parts. Still uses add part but moved logic away
+        //from add_part form
 
+
+        public void addInhousePart(int partID, string name, decimal price, int inventory, int min, int max, int machineID)
+        {
+            
+            Part part = new Inhouse(partID, name, price, inventory, min, max, machineID);
+            addPart(part);
+        }
+
+        public void addOutsourcedPart(int partID, string name, decimal price, int inventory, int min, int max, string companyName)
+        {
+            
+            Part part = new Outsourced(partID, name, price, inventory, min, max, companyName);
+            addPart(part);
+
+
+        }
     }
 }

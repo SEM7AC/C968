@@ -15,7 +15,7 @@ namespace C968
     {
         public bool saveOK = false;
         public Inventory Inventory { get; set; }
-        public Add_Part()
+        public Add_Part() //Add_Part constructor
         {
             InitializeComponent();
             tb_part_add_id.Text = Inventory.GeneratePartID().ToString();
@@ -159,9 +159,11 @@ namespace C968
                 
             }
 
-            // Close the form or provide feedback to the user
+
+            
+            
             this.Close();
-            this.Close();
+            
         }
 
         /********************************************************************************/

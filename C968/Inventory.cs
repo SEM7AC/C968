@@ -16,7 +16,7 @@ namespace C968
 
         public static int GeneratePartID()
         {
-            return uniquePartID++;
+            return uniquePartID++; //starts with 1001 and then increments
         }
         public void addProduct(Product product)
         {
@@ -42,11 +42,18 @@ namespace C968
         public void addPart(Part part)
         {
             AllParts.Add(part);
+            
         }
 
         public bool deletePart(int id)
         {
-            return true; //change later
+            var part = AllParts.FirstOrDefault(p => p.PartID == id);
+            if (part != null)
+            {
+                AllParts.Remove(part);
+                return true;
+            }
+            return false;
         }
 
         public Part lookupPart(int id)

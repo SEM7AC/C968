@@ -251,7 +251,7 @@ namespace C968
         private void tb_part_add_mi_cn_TextChanged(object sender, EventArgs e)
         {
             // Validate MachineID / Company Name depending on radio button selection either int or string
-            // FIX THIS SECTION AHHHHHHHHHHH
+            // Its fixed finnaly
             if (rb_part_add_inHouse.Checked && !int.TryParse(tb_part_add_mi_cn.Text, out int machineID))
             {
                 ValidateHelper(tb_part_add_mi_cn, false);

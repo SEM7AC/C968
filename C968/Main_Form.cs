@@ -36,15 +36,15 @@ namespace C968
             {
                 int selectedIndex = dg_parts.SelectedRows[0].Index;
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
-                                
+
                 Modify_Part modifyPart = new Modify_Part(selectedPart)
                 {
                     Inventory = this.Inventory
                 };
 
-                modifyPart.Show();
+                modifyPart.ShowDialog();
 
-                // Optionally, refresh the DataGridView to reflect any changes made
+                dg_parts.ClearSelection();
                 dg_parts.Refresh();
 
 
@@ -55,7 +55,7 @@ namespace C968
                 MessageBox.Show("Please select a part to modify");
             }
 
-            
+
         }
 
         private void btn_parts_delete_Click(object sender, EventArgs e)
@@ -68,31 +68,34 @@ namespace C968
 
                 if (selectedPart != null)
                 {
-                    int id = selectedPart.PartID;
-                    if (Inventory.deletePart(id))// Call your DeletePart function and check if it returns true
+
+                    DialogResult result = MessageBox.Show("Confirm Delete", "Wait", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
                     {
-                        MessageBox.Show("Part deleted successfully.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete the part.");
+
+                        int id = selectedPart.PartID;
+                        if (Inventory.deletePart(id))// Call your DeletePart function and check if it returns true
+                        {
+                            MessageBox.Show("Part deleted successfully.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the part.");
+                        }
                     }
                 }
             }
 
-            else 
-            { 
+            else
+            {
                 MessageBox.Show("Please select a part to delete.");
             }
-            
+
 
         }
 
-        // This will capture which part ID is selected when the user highlights a part
-        // Will need to pass the ID to the delete and modify part functions....
-        private void dg_parts_SelectionChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -25,7 +25,7 @@ namespace C968
             // Load the part data into the form controls
             tb_part_modify_id.Text = part.PartID.ToString();
             tb_part_modify_name.Text = part.Name;
-            tb_part_modify_inventory.Text = part.InStock.ToString();
+            tb_part_modify_inventory.Text = part.Inventory.ToString();
             tb_part_modify_priceCost.Text = part.Price.ToString();
             tb_part_modify_max.Text = part.Max.ToString();
             tb_part_modify_min.Text = part.Min.ToString();
@@ -155,7 +155,7 @@ namespace C968
         {
             // Retrieve updated data from textboxes
             _modifyPart.Name = tb_part_modify_name.Text;
-            _modifyPart.InStock = int.Parse(tb_part_modify_inventory.Text);
+            _modifyPart.Inventory = int.Parse(tb_part_modify_inventory.Text);
             _modifyPart.Price = decimal.Parse(tb_part_modify_priceCost.Text);
             _modifyPart.Max = int.Parse(tb_part_modify_max.Text);
             _modifyPart.Min = int.Parse(tb_part_modify_min.Text);

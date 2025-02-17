@@ -4,7 +4,7 @@ namespace C968
 {
     public partial class Main_Form : Form
     {
-        
+
         public Inventory Inventory { get; set; } = new Inventory();
 
 
@@ -105,8 +105,8 @@ namespace C968
 
 
         }
-        
-        
+
+
         // Search function finds fist part.Name that contains what ever you 
         // type into the searchbox and changes the background color of the data
         //grid to match... 
@@ -128,6 +128,18 @@ namespace C968
             }
             dg_parts.ClearSelection();
 
+        }
+
+        private void btn_products_add_Click(object sender, EventArgs e)
+        {
+            Add_Product add_Product = new Add_Product();
+            add_Product.ShowDialog();
+        }
+
+        private void btn_products_modify_Click(object sender, EventArgs e)
+        {
+            Modify_Product modify_Product = new Modify_Product();
+            modify_Product.ShowDialog();
         }
     }
 }

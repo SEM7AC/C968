@@ -17,7 +17,7 @@ namespace C968
 
         public decimal Price { get; set; }
 
-        public int Instock { get; set; }
+        public int Inventory { get; set; }
 
         public int Min { get; set; }
 

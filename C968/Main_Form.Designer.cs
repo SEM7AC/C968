@@ -162,6 +162,7 @@
             btn_products_modify.TabIndex = 13;
             btn_products_modify.Text = "Modify";
             btn_products_modify.UseVisualStyleBackColor = true;
+            btn_products_modify.Click += btn_products_modify_Click;
             // 
             // btn_products_add
             // 
@@ -171,6 +172,7 @@
             btn_products_add.TabIndex = 12;
             btn_products_add.Text = "Add";
             btn_products_add.UseVisualStyleBackColor = true;
+            btn_products_add.Click += btn_products_add_Click;
             // 
             // btn_exit
             // 

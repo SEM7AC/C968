@@ -18,7 +18,7 @@ namespace C968
             PartID = partID;
             Name = name;
             Price = price;
-            InStock = inStock;
+            Inventory = inStock;
             Min = min;
             Max = max;
             CompanyName = cn;

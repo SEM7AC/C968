@@ -36,3 +36,5 @@ C:\Users\cseml\Source\Repos\C968\C968\obj\Debug\net8.0-windows\C968.Add_Part.res
 C:\Users\cseml\Source\Repos\C968\C968\obj\Debug\net8.0-windows\C968.Modify_Part.resources
 C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.Add_Part.resources
 C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.Modify_Part.resources
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.Add_Product.resources
+C:\Users\cseml\OneDrive\Desktop\C968\C968\obj\Debug\net8.0-windows\C968.Modify_Product.resources

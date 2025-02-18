@@ -21,10 +21,10 @@ namespace C968
             return uniquePartID++; 
         }
 
-        //NOT IMPLEMENTED YET *******************************************
+        //Method for adding a product
         public void addProduct(Product product)
         {
-
+            Products.Add(product);
         }
 
         //NOT IMPLEMENTED YET *******************************************

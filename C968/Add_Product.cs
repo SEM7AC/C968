@@ -12,9 +12,12 @@ namespace C968
 {
     public partial class Add_Product : Form
     {
-        public Add_Product()
+        Inventory Inventory = new Inventory();
+        public Add_Product(Inventory inventory)
         {
             InitializeComponent();
+            dg_add_product_cp.DataSource = inventory.AllParts;
+            
         }
 
         private void btn_add_product_cancel_Click(object sender, EventArgs e)

@@ -13,6 +13,8 @@ namespace C968
             InitializeComponent();
             dg_parts.DataSource = Inventory.AllParts;
             dg_products.DataSource = Inventory.Products;
+
+
         }
 
         //Exits the main_form
@@ -132,7 +134,7 @@ namespace C968
 
         private void btn_products_add_Click(object sender, EventArgs e)
         {
-            Add_Product add_Product = new Add_Product();
+            Add_Product add_Product = new Add_Product(this.Inventory);
             add_Product.ShowDialog();
         }
 
@@ -140,6 +142,28 @@ namespace C968
         {
             Modify_Product modify_Product = new Modify_Product();
             modify_Product.ShowDialog();
+        }
+
+        private void btn_products_search_Click(object sender, EventArgs e)
+        {
+            {
+                string find = tb_products_search.Text.ToLower();
+
+                foreach (DataGridViewRow row in dg_products.Rows)
+                {
+                    Product product = row.DataBoundItem as Product;
+                    if (product != null && product.Name.ToLower().Contains(find))
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                    }
+                }
+                dg_products.ClearSelection();
+
+            }
         }
     }
 }

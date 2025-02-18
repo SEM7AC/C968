@@ -49,6 +49,8 @@
             lbl_modify_product_name = new Label();
             lbl_modify_product_ID = new Label();
             lbl_modify_product_title = new Label();
+            lbl_modify_product_cp = new Label();
+            lbl_modify_product_ap = new Label();
             ((System.ComponentModel.ISupportInitialize)dg_modify_product_ap).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dg_modify_product_cp).BeginInit();
             SuspendLayout();
@@ -56,7 +58,7 @@
             // dg_modify_product_ap
             // 
             dg_modify_product_ap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dg_modify_product_ap.Location = new Point(286, 286);
+            dg_modify_product_ap.Location = new Point(286, 326);
             dg_modify_product_ap.Name = "dg_modify_product_ap";
             dg_modify_product_ap.RowHeadersWidth = 51;
             dg_modify_product_ap.Size = new Size(596, 188);
@@ -120,7 +122,7 @@
             // tb_modify_product_max
             // 
             tb_modify_product_max.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_max.Location = new Point(90, 382);
+            tb_modify_product_max.Location = new Point(90, 314);
             tb_modify_product_max.Name = "tb_modify_product_max";
             tb_modify_product_max.Size = new Size(125, 27);
             tb_modify_product_max.TabIndex = 34;
@@ -128,7 +130,7 @@
             // tb_modify_product_min
             // 
             tb_modify_product_min.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_min.Location = new Point(90, 332);
+            tb_modify_product_min.Location = new Point(90, 356);
             tb_modify_product_min.Name = "tb_modify_product_min";
             tb_modify_product_min.Size = new Size(125, 27);
             tb_modify_product_min.TabIndex = 33;
@@ -136,7 +138,7 @@
             // tb_modify_product_price
             // 
             tb_modify_product_price.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_price.Location = new Point(90, 286);
+            tb_modify_product_price.Location = new Point(90, 272);
             tb_modify_product_price.Name = "tb_modify_product_price";
             tb_modify_product_price.Size = new Size(125, 27);
             tb_modify_product_price.TabIndex = 32;
@@ -144,7 +146,7 @@
             // tb_modify_product_inventory
             // 
             tb_modify_product_inventory.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_inventory.Location = new Point(90, 238);
+            tb_modify_product_inventory.Location = new Point(90, 230);
             tb_modify_product_inventory.Name = "tb_modify_product_inventory";
             tb_modify_product_inventory.Size = new Size(125, 27);
             tb_modify_product_inventory.TabIndex = 31;
@@ -152,7 +154,7 @@
             // tb_modify_product_name
             // 
             tb_modify_product_name.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_name.Location = new Point(90, 199);
+            tb_modify_product_name.Location = new Point(90, 188);
             tb_modify_product_name.Name = "tb_modify_product_name";
             tb_modify_product_name.Size = new Size(125, 27);
             tb_modify_product_name.TabIndex = 30;
@@ -177,7 +179,7 @@
             // lbl_modify_product_max
             // 
             lbl_modify_product_max.AutoSize = true;
-            lbl_modify_product_max.Location = new Point(47, 382);
+            lbl_modify_product_max.Location = new Point(43, 316);
             lbl_modify_product_max.Name = "lbl_modify_product_max";
             lbl_modify_product_max.Size = new Size(37, 20);
             lbl_modify_product_max.TabIndex = 27;
@@ -187,7 +189,7 @@
             // lbl_modify_product_min
             // 
             lbl_modify_product_min.AutoSize = true;
-            lbl_modify_product_min.Location = new Point(50, 332);
+            lbl_modify_product_min.Location = new Point(46, 358);
             lbl_modify_product_min.Name = "lbl_modify_product_min";
             lbl_modify_product_min.Size = new Size(34, 20);
             lbl_modify_product_min.TabIndex = 26;
@@ -197,7 +199,7 @@
             // lbl_modify_product_price
             // 
             lbl_modify_product_price.AutoSize = true;
-            lbl_modify_product_price.Location = new Point(43, 286);
+            lbl_modify_product_price.Location = new Point(39, 274);
             lbl_modify_product_price.Name = "lbl_modify_product_price";
             lbl_modify_product_price.Size = new Size(41, 20);
             lbl_modify_product_price.TabIndex = 25;
@@ -207,7 +209,7 @@
             // lbl_modify_product_inventory
             // 
             lbl_modify_product_inventory.AutoSize = true;
-            lbl_modify_product_inventory.Location = new Point(14, 238);
+            lbl_modify_product_inventory.Location = new Point(14, 232);
             lbl_modify_product_inventory.Name = "lbl_modify_product_inventory";
             lbl_modify_product_inventory.Size = new Size(70, 20);
             lbl_modify_product_inventory.TabIndex = 24;
@@ -217,7 +219,7 @@
             // lbl_modify_product_name
             // 
             lbl_modify_product_name.AutoSize = true;
-            lbl_modify_product_name.Location = new Point(35, 199);
+            lbl_modify_product_name.Location = new Point(31, 190);
             lbl_modify_product_name.Name = "lbl_modify_product_name";
             lbl_modify_product_name.Size = new Size(49, 20);
             lbl_modify_product_name.TabIndex = 23;
@@ -227,7 +229,7 @@
             // lbl_modify_product_ID
             // 
             lbl_modify_product_ID.AutoSize = true;
-            lbl_modify_product_ID.Location = new Point(60, 146);
+            lbl_modify_product_ID.Location = new Point(56, 148);
             lbl_modify_product_ID.Name = "lbl_modify_product_ID";
             lbl_modify_product_ID.Size = new Size(24, 20);
             lbl_modify_product_ID.TabIndex = 22;
@@ -244,11 +246,31 @@
             lbl_modify_product_title.TabIndex = 21;
             lbl_modify_product_title.Text = "Modify Product";
             // 
+            // lbl_modify_product_cp
+            // 
+            lbl_modify_product_cp.AutoSize = true;
+            lbl_modify_product_cp.Location = new Point(286, 48);
+            lbl_modify_product_cp.Name = "lbl_modify_product_cp";
+            lbl_modify_product_cp.Size = new Size(125, 20);
+            lbl_modify_product_cp.TabIndex = 42;
+            lbl_modify_product_cp.Text = "All Canidate Parts";
+            // 
+            // lbl_modify_product_ap
+            // 
+            lbl_modify_product_ap.AutoSize = true;
+            lbl_modify_product_ap.Location = new Point(286, 293);
+            lbl_modify_product_ap.Name = "lbl_modify_product_ap";
+            lbl_modify_product_ap.Size = new Size(116, 20);
+            lbl_modify_product_ap.TabIndex = 43;
+            lbl_modify_product_ap.Text = "Associated Parts";
+            // 
             // Modify_Product
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(997, 566);
+            Controls.Add(lbl_modify_product_ap);
+            Controls.Add(lbl_modify_product_cp);
             Controls.Add(dg_modify_product_ap);
             Controls.Add(dg_modify_product_cp);
             Controls.Add(btn_modify_product_cancel);
@@ -302,5 +324,7 @@
         private Label lbl_modify_product_name;
         private Label lbl_modify_product_ID;
         private Label lbl_modify_product_title;
+        private Label lbl_modify_product_cp;
+        private Label lbl_modify_product_ap;
     }
 }

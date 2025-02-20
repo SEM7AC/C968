@@ -136,6 +136,10 @@ namespace C968
         {
             Add_Product add_Product = new Add_Product(this.Inventory);
             add_Product.ShowDialog();
+            dg_products.DataSource = null;  // Clear the DataSource
+            dg_products.DataSource = Inventory.Products;  // Rebind the DataSource
+            dg_products.ClearSelection();
+            dg_products.Refresh();
         }
 
         private void btn_products_modify_Click(object sender, EventArgs e)

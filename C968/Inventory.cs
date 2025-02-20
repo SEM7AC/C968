@@ -11,6 +11,7 @@ namespace C968
     public class Inventory
     {
         private static int uniquePartID = 1001; //Unique Part ID counter
+        private static int uniqueProductID = 5001; //Unique Product ID counter
         public BindingList<Product> Products { get; set; } = new BindingList<Product>();
         public BindingList<Part> AllParts { get; set; } = new BindingList<Part>();
 
@@ -19,6 +20,12 @@ namespace C968
         public static int GeneratePartID()
         {
             return uniquePartID++; 
+        }
+
+        //Method to increment productID when adding a product to inventory
+        public static int GenerateProductID()
+        {
+            return uniqueProductID++;
         }
 
         //Method for adding a product

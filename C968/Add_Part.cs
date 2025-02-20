@@ -23,6 +23,59 @@ namespace C968
             tb_part_add_id.Text = partID.ToString();
         }
 
+        private void radioButton_inHouse_CheckedChanged(object sender, EventArgs e)
+        {
+            lbl_part_add_mi_cn.Text = "Machine ID";
+            CheckFormValidity();
+        }
+
+        private void radioButton_outsourced_CheckedChanged(object sender, EventArgs e)
+        {
+            lbl_part_add_mi_cn.Text = "Company Name";
+            CheckFormValidity();
+        }
+
+        private void btn_part_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_part_save_Click(object sender, EventArgs e)
+        {
+
+            // Retrieve data from textboxes
+            int partID = int.Parse(tb_part_add_id.Text);
+            string partName = tb_part_add_name.Text;
+            int inventory = int.Parse(tb_part_add_inventory.Text);
+            decimal price = decimal.Parse(tb_part_add_priceCost.Text);
+            int max = int.Parse(tb_part_add_max.Text);
+            int min = int.Parse(tb_part_add_min.Text);
+            string mi_cn = tb_part_add_mi_cn.Text;
+
+            // Check if in-house or outsourced part
+
+
+            // Perform the save operation
+            if (rb_part_add_inHouse.Checked)
+            {
+                // Save in-house part with machine ID
+                int machineID = int.Parse(mi_cn);
+
+                Inventory.addInhousePart(partID, partName, price, inventory, min, max, machineID);
+
+            }
+            else
+            {
+                // Save outsourced part with company name
+                Inventory.addOutsourcedPart(partID, partName, price, inventory, min, max, mi_cn);
+
+
+            }
+
+            this.Close();
+
+        }
+        
         //Helper for validation code.....
 
         public void ValidateHelper(TextBox tb, bool isValid)
@@ -112,61 +165,7 @@ namespace C968
 
         }
 
-        private void radioButton_inHouse_CheckedChanged(object sender, EventArgs e)
-        {
-            lbl_part_add_mi_cn.Text = "Machine ID";
-            CheckFormValidity();
-        }
-
-        private void radioButton_outsourced_CheckedChanged(object sender, EventArgs e)
-        {
-            lbl_part_add_mi_cn.Text = "Company Name";
-            CheckFormValidity();
-        }
-
-        private void btn_part_cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_part_save_Click(object sender, EventArgs e)
-        {
-
-            // Retrieve data from textboxes
-            int partID = int.Parse(tb_part_add_id.Text);
-            string partName = tb_part_add_name.Text;
-            int inventory = int.Parse(tb_part_add_inventory.Text);
-            decimal price = decimal.Parse(tb_part_add_priceCost.Text);
-            int max = int.Parse(tb_part_add_max.Text);
-            int min = int.Parse(tb_part_add_min.Text);
-            string mi_cn = tb_part_add_mi_cn.Text;
-
-            // Check if in-house or outsourced part
-            
-
-            // Perform the save operation
-            if (rb_part_add_inHouse.Checked)
-            {
-                // Save in-house part with machine ID
-                int machineID = int.Parse(mi_cn);
-
-                Inventory.addInhousePart(partID, partName, price, inventory, min, max, machineID);
-
-            }
-            else
-            {
-                // Save outsourced part with company name
-                Inventory.addOutsourcedPart(partID, partName, price, inventory, min, max, mi_cn);
-                
-                
-            }
-
-
-            
-            
-            this.Close();
-            
-        }
+        
 
         /********************************************************************************/
         // This section contains all TextChanged events and performs validation          /

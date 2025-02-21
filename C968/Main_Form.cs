@@ -142,8 +142,26 @@ namespace C968
 
         private void btn_products_modify_Click(object sender, EventArgs e)
         {
-            Modify_Product modify_Product = new Modify_Product();
-            modify_Product.ShowDialog();
+            if (dg_products.SelectedRows.Count > 0) //are there parts in the datagrid and 1 is selected 
+            {
+                int selectedIndex = dg_products.SelectedRows[0].Index;
+                Product selectedProduct = dg_products.Rows[selectedIndex].DataBoundItem as Product;
+
+                Modify_Product modifyProduct = new Modify_Product(selectedProduct, this.Inventory) //pass selected part to the modify_form
+                {
+                    Inventory = this.Inventory
+                };
+
+                modifyProduct.ShowDialog();
+
+                dg_parts.ClearSelection();
+                dg_parts.Refresh();
+
+            }
+            else
+            {
+                MessageBox.Show("Please select a product to modify");
+            }
         }
 
         private void btn_products_search_Click(object sender, EventArgs e)

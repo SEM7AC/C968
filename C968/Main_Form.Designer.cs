@@ -239,6 +239,7 @@
             dg_products.Name = "dg_products";
             dg_products.RowHeadersVisible = false;
             dg_products.RowHeadersWidth = 51;
+            dg_products.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_products.Size = new Size(724, 353);
             dg_products.TabIndex = 17;
             // 

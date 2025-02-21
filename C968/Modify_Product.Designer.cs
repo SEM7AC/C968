@@ -30,18 +30,18 @@
         {
             dg_modify_product_ap = new DataGridView();
             dg_modify_product_cp = new DataGridView();
-            btn_modify_product_cancel = new Button();
-            btn_modify_product_save = new Button();
-            btn_modify_product_delete = new Button();
-            btn_modify_product_add = new Button();
-            btn_modify_product_search = new Button();
-            tb_modify_product_max = new TextBox();
-            tb_modify_product_min = new TextBox();
-            tb_modify_product_price = new TextBox();
-            tb_modify_product_inventory = new TextBox();
-            tb_modify_product_name = new TextBox();
-            tb_modify_product_ID = new TextBox();
-            tb_modify_product_search = new TextBox();
+            btn_product_modify_cancel = new Button();
+            btn_product_modify_save = new Button();
+            btn_product_modify_delete = new Button();
+            btn_product_modify_add = new Button();
+            btn_product_modify_search = new Button();
+            tb_product_modify_max = new TextBox();
+            tb_product_modify_min = new TextBox();
+            tb_product_modify_price = new TextBox();
+            tb_product_modify_inventory = new TextBox();
+            tb_product_modify_name = new TextBox();
+            tb_product_modify_ID = new TextBox();
+            tb_product_modify_search = new TextBox();
             lbl_modify_product_max = new Label();
             lbl_modify_product_min = new Label();
             lbl_modify_product_price = new Label();
@@ -73,108 +73,110 @@
             dg_modify_product_cp.Size = new Size(596, 188);
             dg_modify_product_cp.TabIndex = 40;
             // 
-            // btn_modify_product_cancel
+            // btn_product_modify_cancel
             // 
-            btn_modify_product_cancel.Location = new Point(784, 520);
-            btn_modify_product_cancel.Name = "btn_modify_product_cancel";
-            btn_modify_product_cancel.Size = new Size(94, 29);
-            btn_modify_product_cancel.TabIndex = 39;
-            btn_modify_product_cancel.Text = "Cancel";
-            btn_modify_product_cancel.UseVisualStyleBackColor = true;
-            btn_modify_product_cancel.Click += btn_modify_product_cancel_Click;
+            btn_product_modify_cancel.Location = new Point(784, 520);
+            btn_product_modify_cancel.Name = "btn_product_modify_cancel";
+            btn_product_modify_cancel.Size = new Size(94, 29);
+            btn_product_modify_cancel.TabIndex = 39;
+            btn_product_modify_cancel.Text = "Cancel";
+            btn_product_modify_cancel.UseVisualStyleBackColor = true;
+            btn_product_modify_cancel.Click += btn_modify_product_cancel_Click;
             // 
-            // btn_modify_product_save
+            // btn_product_modify_save
             // 
-            btn_modify_product_save.Location = new Point(575, 520);
-            btn_modify_product_save.Name = "btn_modify_product_save";
-            btn_modify_product_save.Size = new Size(94, 29);
-            btn_modify_product_save.TabIndex = 38;
-            btn_modify_product_save.Text = "Save";
-            btn_modify_product_save.UseVisualStyleBackColor = true;
+            btn_product_modify_save.Location = new Point(575, 520);
+            btn_product_modify_save.Name = "btn_product_modify_save";
+            btn_product_modify_save.Size = new Size(94, 29);
+            btn_product_modify_save.TabIndex = 38;
+            btn_product_modify_save.Text = "Save";
+            btn_product_modify_save.UseVisualStyleBackColor = true;
+            btn_product_modify_save.Click += btn_product_modify_save_Click;
             // 
-            // btn_modify_product_delete
+            // btn_product_modify_delete
             // 
-            btn_modify_product_delete.Location = new Point(681, 520);
-            btn_modify_product_delete.Name = "btn_modify_product_delete";
-            btn_modify_product_delete.Size = new Size(94, 29);
-            btn_modify_product_delete.TabIndex = 37;
-            btn_modify_product_delete.Text = "Delete";
-            btn_modify_product_delete.UseVisualStyleBackColor = true;
+            btn_product_modify_delete.Location = new Point(681, 520);
+            btn_product_modify_delete.Name = "btn_product_modify_delete";
+            btn_product_modify_delete.Size = new Size(94, 29);
+            btn_product_modify_delete.TabIndex = 37;
+            btn_product_modify_delete.Text = "Delete";
+            btn_product_modify_delete.UseVisualStyleBackColor = true;
+            btn_product_modify_delete.Click += btn_product_modify_delete_Click;
             // 
-            // btn_modify_product_add
+            // btn_product_modify_add
             // 
-            btn_modify_product_add.Location = new Point(888, 240);
-            btn_modify_product_add.Name = "btn_modify_product_add";
-            btn_modify_product_add.Size = new Size(94, 29);
-            btn_modify_product_add.TabIndex = 36;
-            btn_modify_product_add.Text = "Add";
-            btn_modify_product_add.UseVisualStyleBackColor = true;
+            btn_product_modify_add.Location = new Point(888, 240);
+            btn_product_modify_add.Name = "btn_product_modify_add";
+            btn_product_modify_add.Size = new Size(94, 29);
+            btn_product_modify_add.TabIndex = 36;
+            btn_product_modify_add.Text = "Add";
+            btn_product_modify_add.UseVisualStyleBackColor = true;
             // 
-            // btn_modify_product_search
+            // btn_product_modify_search
             // 
-            btn_modify_product_search.Location = new Point(581, 48);
-            btn_modify_product_search.Name = "btn_modify_product_search";
-            btn_modify_product_search.Size = new Size(94, 29);
-            btn_modify_product_search.TabIndex = 35;
-            btn_modify_product_search.Text = "Search";
-            btn_modify_product_search.UseVisualStyleBackColor = true;
+            btn_product_modify_search.Location = new Point(581, 48);
+            btn_product_modify_search.Name = "btn_product_modify_search";
+            btn_product_modify_search.Size = new Size(94, 29);
+            btn_product_modify_search.TabIndex = 35;
+            btn_product_modify_search.Text = "Search";
+            btn_product_modify_search.UseVisualStyleBackColor = true;
             // 
-            // tb_modify_product_max
+            // tb_product_modify_max
             // 
-            tb_modify_product_max.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_max.Location = new Point(90, 314);
-            tb_modify_product_max.Name = "tb_modify_product_max";
-            tb_modify_product_max.Size = new Size(125, 27);
-            tb_modify_product_max.TabIndex = 34;
+            tb_product_modify_max.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_max.Location = new Point(90, 314);
+            tb_product_modify_max.Name = "tb_product_modify_max";
+            tb_product_modify_max.Size = new Size(125, 27);
+            tb_product_modify_max.TabIndex = 34;
             // 
-            // tb_modify_product_min
+            // tb_product_modify_min
             // 
-            tb_modify_product_min.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_min.Location = new Point(90, 356);
-            tb_modify_product_min.Name = "tb_modify_product_min";
-            tb_modify_product_min.Size = new Size(125, 27);
-            tb_modify_product_min.TabIndex = 33;
+            tb_product_modify_min.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_min.Location = new Point(90, 356);
+            tb_product_modify_min.Name = "tb_product_modify_min";
+            tb_product_modify_min.Size = new Size(125, 27);
+            tb_product_modify_min.TabIndex = 33;
             // 
-            // tb_modify_product_price
+            // tb_product_modify_price
             // 
-            tb_modify_product_price.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_price.Location = new Point(90, 272);
-            tb_modify_product_price.Name = "tb_modify_product_price";
-            tb_modify_product_price.Size = new Size(125, 27);
-            tb_modify_product_price.TabIndex = 32;
+            tb_product_modify_price.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_price.Location = new Point(90, 272);
+            tb_product_modify_price.Name = "tb_product_modify_price";
+            tb_product_modify_price.Size = new Size(125, 27);
+            tb_product_modify_price.TabIndex = 32;
             // 
-            // tb_modify_product_inventory
+            // tb_product_modify_inventory
             // 
-            tb_modify_product_inventory.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_inventory.Location = new Point(90, 230);
-            tb_modify_product_inventory.Name = "tb_modify_product_inventory";
-            tb_modify_product_inventory.Size = new Size(125, 27);
-            tb_modify_product_inventory.TabIndex = 31;
+            tb_product_modify_inventory.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_inventory.Location = new Point(90, 230);
+            tb_product_modify_inventory.Name = "tb_product_modify_inventory";
+            tb_product_modify_inventory.Size = new Size(125, 27);
+            tb_product_modify_inventory.TabIndex = 31;
             // 
-            // tb_modify_product_name
+            // tb_product_modify_name
             // 
-            tb_modify_product_name.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_name.Location = new Point(90, 188);
-            tb_modify_product_name.Name = "tb_modify_product_name";
-            tb_modify_product_name.Size = new Size(125, 27);
-            tb_modify_product_name.TabIndex = 30;
+            tb_product_modify_name.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_name.Location = new Point(90, 188);
+            tb_product_modify_name.Name = "tb_product_modify_name";
+            tb_product_modify_name.Size = new Size(125, 27);
+            tb_product_modify_name.TabIndex = 30;
             // 
-            // tb_modify_product_ID
+            // tb_product_modify_ID
             // 
-            tb_modify_product_ID.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_ID.Location = new Point(90, 146);
-            tb_modify_product_ID.Name = "tb_modify_product_ID";
-            tb_modify_product_ID.ReadOnly = true;
-            tb_modify_product_ID.Size = new Size(125, 27);
-            tb_modify_product_ID.TabIndex = 29;
+            tb_product_modify_ID.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_ID.Location = new Point(90, 146);
+            tb_product_modify_ID.Name = "tb_product_modify_ID";
+            tb_product_modify_ID.ReadOnly = true;
+            tb_product_modify_ID.Size = new Size(125, 27);
+            tb_product_modify_ID.TabIndex = 29;
             // 
-            // tb_modify_product_search
+            // tb_product_modify_search
             // 
-            tb_modify_product_search.BorderStyle = BorderStyle.FixedSingle;
-            tb_modify_product_search.Location = new Point(681, 48);
-            tb_modify_product_search.Name = "tb_modify_product_search";
-            tb_modify_product_search.Size = new Size(201, 27);
-            tb_modify_product_search.TabIndex = 28;
+            tb_product_modify_search.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_search.Location = new Point(681, 48);
+            tb_product_modify_search.Name = "tb_product_modify_search";
+            tb_product_modify_search.Size = new Size(201, 27);
+            tb_product_modify_search.TabIndex = 28;
             // 
             // lbl_modify_product_max
             // 
@@ -273,18 +275,18 @@
             Controls.Add(lbl_modify_product_cp);
             Controls.Add(dg_modify_product_ap);
             Controls.Add(dg_modify_product_cp);
-            Controls.Add(btn_modify_product_cancel);
-            Controls.Add(btn_modify_product_save);
-            Controls.Add(btn_modify_product_delete);
-            Controls.Add(btn_modify_product_add);
-            Controls.Add(btn_modify_product_search);
-            Controls.Add(tb_modify_product_max);
-            Controls.Add(tb_modify_product_min);
-            Controls.Add(tb_modify_product_price);
-            Controls.Add(tb_modify_product_inventory);
-            Controls.Add(tb_modify_product_name);
-            Controls.Add(tb_modify_product_ID);
-            Controls.Add(tb_modify_product_search);
+            Controls.Add(btn_product_modify_cancel);
+            Controls.Add(btn_product_modify_save);
+            Controls.Add(btn_product_modify_delete);
+            Controls.Add(btn_product_modify_add);
+            Controls.Add(btn_product_modify_search);
+            Controls.Add(tb_product_modify_max);
+            Controls.Add(tb_product_modify_min);
+            Controls.Add(tb_product_modify_price);
+            Controls.Add(tb_product_modify_inventory);
+            Controls.Add(tb_product_modify_name);
+            Controls.Add(tb_product_modify_ID);
+            Controls.Add(tb_product_modify_search);
             Controls.Add(lbl_modify_product_max);
             Controls.Add(lbl_modify_product_min);
             Controls.Add(lbl_modify_product_price);
@@ -305,18 +307,18 @@
 
         private DataGridView dg_modify_product_ap;
         private DataGridView dg_modify_product_cp;
-        private Button btn_modify_product_cancel;
-        private Button btn_modify_product_save;
-        private Button btn_modify_product_delete;
-        private Button btn_modify_product_add;
-        private Button btn_modify_product_search;
-        private TextBox tb_modify_product_max;
-        private TextBox tb_modify_product_min;
-        private TextBox tb_modify_product_price;
-        private TextBox tb_modify_product_inventory;
-        private TextBox tb_modify_product_name;
-        private TextBox tb_modify_product_ID;
-        private TextBox tb_modify_product_search;
+        private Button btn_product_modify_cancel;
+        private Button btn_product_modify_save;
+        private Button btn_product_modify_delete;
+        private Button btn_product_modify_add;
+        private Button btn_product_modify_search;
+        private TextBox tb_product_modify_max;
+        private TextBox tb_product_modify_min;
+        private TextBox tb_product_modify_price;
+        private TextBox tb_product_modify_inventory;
+        private TextBox tb_product_modify_name;
+        private TextBox tb_product_modify_ID;
+        private TextBox tb_product_modify_search;
         private Label lbl_modify_product_max;
         private Label lbl_modify_product_min;
         private Label lbl_modify_product_price;

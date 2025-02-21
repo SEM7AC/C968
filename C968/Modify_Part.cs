@@ -14,13 +14,14 @@ namespace C968
     {
         private Part _modifyPart;
         public Inventory Inventory { get; set; }
-        public Modify_Part(Part part)
+        public Modify_Part(Part part, Inventory inventory)
         {
             InitializeComponent();
 
-            _modifyPart = part; //saves the reference to the part obj that is passed into the form
-                                //this is needed when save/updating an existing part instead of creating 
-                                //a new part obj.
+            _modifyPart = part;     //saves the reference to the part obj that is passed into the form
+            Inventory = inventory;  // Inventory passed from main form.
+                                    //this is needed when save/updating an existing part instead of creating 
+                                    //a new part obj.
 
             // Load the part data into the form controls
             tb_part_modify_id.Text = part.PartID.ToString();
@@ -171,10 +172,6 @@ namespace C968
 
             // Update the inventory and refresh the DataGridView in the main form
             Inventory.updatePart(_modifyPart.PartID, _modifyPart);
-
-            this.Close();
-
-
 
             this.Close();
         }

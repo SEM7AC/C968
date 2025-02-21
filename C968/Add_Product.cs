@@ -16,9 +16,10 @@ namespace C968
         private int productID; //Unique ID for products
 
         public Inventory Inventory { get; set; }
-        public Add_Product(Inventory Inventory)
+        public Add_Product(Inventory inventory)
         {
             InitializeComponent();
+            Inventory = inventory;
             dg_product_add_cp.DataSource = Inventory.AllParts;
 
             productID = Inventory.GenerateProductID();
@@ -197,15 +198,15 @@ namespace C968
             int min = int.Parse(tb_product_add_min.Text);
             
                      
-            Product product = new Product();
-            product.ProductID = productID;
-            product.Name = productName;
-            product.Inventory = inventory;
-            product.Price = price;
-            product.Max = max;
-            product.Min = min;
+            Product new_product = new Product();
+            new_product.ProductID = productID;
+            new_product.Name = productName;
+            new_product.Inventory = inventory;
+            new_product.Price = price;
+            new_product.Max = max;
+            new_product.Min = min;
 
-            Inventory.Products.Add(product);
+            Inventory.Products.Add(new_product);
 
 
             this.Close();

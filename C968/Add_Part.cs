@@ -16,9 +16,11 @@ namespace C968
         private int partID;
         public bool saveOK = false;
         public Inventory Inventory { get; set; }
-        public Add_Part() //Add_Part constructor
+        public Add_Part(Inventory inventory) //Add_Part constructor
         {
+            
             InitializeComponent();
+            Inventory = inventory;
             partID = Inventory.GeneratePartID();
             tb_part_add_id.Text = partID.ToString();
         }

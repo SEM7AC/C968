@@ -28,10 +28,8 @@ namespace C968
         //ref of the inventory.
         private void btn_parts_add_Click(object sender, EventArgs e)
         {
-            Add_Part addForm = new()
-            {
-                Inventory = this.Inventory // Pass the Inventory instance to Add_Part
-            };
+            Add_Part addForm = new Add_Part(this.Inventory);
+            
             addForm.ShowDialog();
             dg_parts.ClearSelection();
             dg_parts.Refresh();
@@ -50,7 +48,7 @@ namespace C968
                 int selectedIndex = dg_parts.SelectedRows[0].Index;
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
 
-                Modify_Part modifyPart = new Modify_Part(selectedPart) //pass selected part to the modify_form
+                Modify_Part modifyPart = new Modify_Part(selectedPart, this.Inventory) //pass selected part to the modify_form
                 {
                     Inventory = this.Inventory
                 };

@@ -138,3 +138,8 @@ _NCrunch*
 /C968/.vs/C968/v17/.futdcache.v2
 /C968/.vs/C968/DesignTimeBuild/.dtbcache.v2
 *.vsidx
+/C968/obj/Debug/net8.0-windows/C968.assets.cache
+/C968/obj/Debug/net8.0-windows/C968.designer.runtimeconfig.json
+/C968/obj/Debug/net8.0-windows/C968.GeneratedMSBuildEditorConfig.editorconfig
+/.gitignore
+/.gitignore

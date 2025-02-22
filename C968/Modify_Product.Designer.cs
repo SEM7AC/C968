@@ -85,7 +85,7 @@
             // 
             // btn_product_modify_save
             // 
-            btn_product_modify_save.Location = new Point(575, 520);
+            btn_product_modify_save.Location = new Point(684, 520);
             btn_product_modify_save.Name = "btn_product_modify_save";
             btn_product_modify_save.Size = new Size(94, 29);
             btn_product_modify_save.TabIndex = 38;
@@ -95,7 +95,7 @@
             // 
             // btn_product_modify_delete
             // 
-            btn_product_modify_delete.Location = new Point(681, 520);
+            btn_product_modify_delete.Location = new Point(891, 326);
             btn_product_modify_delete.Name = "btn_product_modify_delete";
             btn_product_modify_delete.Size = new Size(94, 29);
             btn_product_modify_delete.TabIndex = 37;
@@ -128,6 +128,7 @@
             tb_product_modify_max.Name = "tb_product_modify_max";
             tb_product_modify_max.Size = new Size(125, 27);
             tb_product_modify_max.TabIndex = 34;
+            tb_product_modify_max.TextChanged += tb_product_modify_max_TextChanged;
             // 
             // tb_product_modify_min
             // 
@@ -136,6 +137,7 @@
             tb_product_modify_min.Name = "tb_product_modify_min";
             tb_product_modify_min.Size = new Size(125, 27);
             tb_product_modify_min.TabIndex = 33;
+            tb_product_modify_min.TextChanged += tb_product_modify_min_TextChanged;
             // 
             // tb_product_modify_price
             // 
@@ -144,6 +146,7 @@
             tb_product_modify_price.Name = "tb_product_modify_price";
             tb_product_modify_price.Size = new Size(125, 27);
             tb_product_modify_price.TabIndex = 32;
+            tb_product_modify_price.TextChanged += tb_product_modify_price_TextChanged;
             // 
             // tb_product_modify_inventory
             // 
@@ -152,6 +155,7 @@
             tb_product_modify_inventory.Name = "tb_product_modify_inventory";
             tb_product_modify_inventory.Size = new Size(125, 27);
             tb_product_modify_inventory.TabIndex = 31;
+            tb_product_modify_inventory.TextChanged += tb_product_modify_inventory_TextChanged;
             // 
             // tb_product_modify_name
             // 
@@ -160,6 +164,7 @@
             tb_product_modify_name.Name = "tb_product_modify_name";
             tb_product_modify_name.Size = new Size(125, 27);
             tb_product_modify_name.TabIndex = 30;
+            tb_product_modify_name.TextChanged += tb_product_modify_name_TextChanged;
             // 
             // tb_product_modify_ID
             // 

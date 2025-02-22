@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Xml.Linq;
-
-namespace C968
+﻿namespace C968
 {
     public partial class Add_Part : Form
     {
         private int partID;
-        public bool saveOK = false;
+        
         public Inventory Inventory { get; set; }
         public Add_Part(Inventory inventory) //Add_Part constructor
         {
@@ -78,7 +67,7 @@ namespace C968
 
         }
         
-        //Helper for validation code.....
+        //Helper for validation code changes the backColor of the text box
 
         public void ValidateHelper(TextBox tb, bool isValid)
         {
@@ -118,7 +107,7 @@ namespace C968
 
             // Additional validation requirements: max > inventory > min
             // All three field must be entered before this check otherwise it gets annoying....
-            // Additional validation requirements: max > inventory > min
+           
             if (!string.IsNullOrWhiteSpace(tb_part_add_inventory.Text) &&
                 !string.IsNullOrWhiteSpace(tb_part_add_max.Text) &&
                 !string.IsNullOrWhiteSpace(tb_part_add_min.Text) &&
@@ -133,7 +122,7 @@ namespace C968
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tb_part_add_inventory.Clear();
                     tb_part_add_max.Clear();
-                    tb_part_add_min.Clear();
+                    tb_part_add_min.Clear(); //Clear the textbox and make user enter valid data
                 }
 
                 if (validMin > validMax)
@@ -146,9 +135,8 @@ namespace C968
                     tb_part_add_min.Clear();
                 }
             }
-            //check requirements for anyonther validation and add them above this comment.....
-
-            // Enable or disable the save button
+            
+            // Enable or disable the save button based on the total form validation
             btn_part_add_save.Enabled = isFormValid;
 
             if (btn_part_add_save.Enabled)

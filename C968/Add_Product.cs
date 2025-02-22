@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace C968
+﻿namespace C968
 {
 
     public partial class Add_Product : Form
@@ -31,6 +21,46 @@ namespace C968
         {
             this.Close();
         }
+
+        private void btn_product_add_save_Click(object sender, EventArgs e)
+        {
+            // Retrieve data from textboxes
+            int productID = int.Parse(tb_product_add_ID.Text);
+            string productName = tb_product_add_name.Text;
+            int inventory = int.Parse(tb_product_add_inventory.Text);
+            decimal price = decimal.Parse(tb_product_add_price.Text);
+            int max = int.Parse(tb_product_add_max.Text);
+            int min = int.Parse(tb_product_add_min.Text);
+
+
+            Product new_product = new Product();
+            new_product.ProductID = productID;
+            new_product.Name = productName;
+            new_product.Inventory = inventory;
+            new_product.Price = price;
+            new_product.Max = max;
+            new_product.Min = min;
+
+            Inventory.Products.Add(new_product);
+
+
+            this.Close();
+        }
+        private void btn_product_add_add_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Add Button Clicked");
+        }
+        private void btn_add_product_delete_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Delete Button Clicked");
+        }
+        private void btn_product_add_search_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Search Button Clicked");
+        }
+
+
+
         //
         // Same validation for Add_Part form used here...
         //
@@ -92,7 +122,6 @@ namespace C968
                     tb_product_add_min.Clear();
                 }
             }
-            //check requirements for anyonther validation and add them above this comment.....
 
             // Enable or disable the save button
             btn_product_add_save.Enabled = isFormValid;
@@ -113,6 +142,15 @@ namespace C968
 
         }
 
+
+
+        /********************************************************************************/
+        // This section contains all TextChanged events and performs validation          /
+        // Validation for each textbox happens as data is entered                        /
+        // Helper Function to change color of textbox if validation passes               /
+        // Full form validation is called after each event to validate form and perform  /
+        // final validation requiring all fields to be filled in with valid data.        /
+        /********************************************************************************/
         private void tb_product_add_name_TextChanged(object sender, EventArgs e)
         {
             // Validate Name textbox: Name must not be null or blank
@@ -187,29 +225,6 @@ namespace C968
             CheckFormValidity();
         }
 
-        private void btn_product_add_save_Click(object sender, EventArgs e)
-        {
-            // Retrieve data from textboxes
-            int productID = int.Parse(tb_product_add_ID.Text);
-            string productName = tb_product_add_name.Text;
-            int inventory = int.Parse(tb_product_add_inventory.Text);
-            decimal price = decimal.Parse(tb_product_add_price.Text);
-            int max = int.Parse(tb_product_add_max.Text);
-            int min = int.Parse(tb_product_add_min.Text);
-            
-                     
-            Product new_product = new Product();
-            new_product.ProductID = productID;
-            new_product.Name = productName;
-            new_product.Inventory = inventory;
-            new_product.Price = price;
-            new_product.Max = max;
-            new_product.Min = min;
-
-            Inventory.Products.Add(new_product);
-
-
-            this.Close();
-        }
+        
     }
 }

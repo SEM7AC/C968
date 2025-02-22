@@ -203,6 +203,7 @@
             btn_product_add_search.TabIndex = 14;
             btn_product_add_search.Text = "Search";
             btn_product_add_search.UseVisualStyleBackColor = true;
+            btn_product_add_search.Click += btn_product_add_search_Click;
             // 
             // btn_product_add_add
             // 
@@ -212,20 +213,22 @@
             btn_product_add_add.TabIndex = 15;
             btn_product_add_add.Text = "Add";
             btn_product_add_add.UseVisualStyleBackColor = true;
+            btn_product_add_add.Click += btn_product_add_add_Click;
             // 
             // btn_add_product_delete
             // 
-            btn_add_product_delete.Location = new Point(670, 525);
+            btn_add_product_delete.Location = new Point(877, 331);
             btn_add_product_delete.Name = "btn_add_product_delete";
             btn_add_product_delete.Size = new Size(94, 29);
             btn_add_product_delete.TabIndex = 16;
             btn_add_product_delete.Text = "Delete";
             btn_add_product_delete.UseVisualStyleBackColor = true;
+            btn_add_product_delete.Click += btn_add_product_delete_Click;
             // 
             // btn_product_add_save
             // 
             btn_product_add_save.Enabled = false;
-            btn_product_add_save.Location = new Point(564, 525);
+            btn_product_add_save.Location = new Point(670, 525);
             btn_product_add_save.Name = "btn_product_add_save";
             btn_product_add_save.Size = new Size(94, 29);
             btn_product_add_save.TabIndex = 17;

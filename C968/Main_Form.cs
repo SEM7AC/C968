@@ -1,17 +1,15 @@
-using System.Runtime.CompilerServices;
-
 namespace C968
 {
     public partial class Main_Form : Form
     {
 
-        public Inventory Inventory { get; set; } = new Inventory();
+        public Inventory Inventory { get; set; } = new Inventory(); //creates instance of inventory
 
 
         public Main_Form()
         {
             InitializeComponent();
-            dg_parts.DataSource = Inventory.AllParts;
+            dg_parts.DataSource = Inventory.AllParts; //datagrid bindings
             dg_products.DataSource = Inventory.Products;
 
 
@@ -29,8 +27,10 @@ namespace C968
         private void btn_parts_add_Click(object sender, EventArgs e)
         {
             Add_Part addForm = new Add_Part(this.Inventory);
-            
-            addForm.ShowDialog();
+
+            addForm.ShowDialog(); //forces interaction with add_part form until complete
+                                  //main_form code pauses and waits for part to be added
+                                  //or the cancel button is pushed then the code below will fire
             dg_parts.ClearSelection();
             dg_parts.Refresh();
 
@@ -48,10 +48,8 @@ namespace C968
                 int selectedIndex = dg_parts.SelectedRows[0].Index;
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
 
-                Modify_Part modifyPart = new Modify_Part(selectedPart, this.Inventory) //pass selected part to the modify_form
-                {
-                    Inventory = this.Inventory
-                };
+                Modify_Part modifyPart = new Modify_Part(selectedPart, this.Inventory); //pass selected part to the modify_form
+                
 
                 modifyPart.ShowDialog();
 
@@ -133,10 +131,9 @@ namespace C968
         private void btn_products_add_Click(object sender, EventArgs e)
         {
             Add_Product add_Product = new Add_Product(this.Inventory);
-            add_Product.ShowDialog();
-            dg_products.DataSource = null;  // Clear the DataSource
-            dg_products.DataSource = Inventory.Products;  // Rebind the DataSource
-            dg_products.ClearSelection();
+            add_Product.ShowDialog(); 
+            
+            dg_products.ClearSelection(); //refresh datagrid and clear selection
             dg_products.Refresh();
         }
 
@@ -169,6 +166,12 @@ namespace C968
             {
                 string find = tb_products_search.Text.ToLower();
 
+                if (find == null)
+                {
+                    dg_products.ClearSelection();
+                }
+
+
                 foreach (DataGridViewRow row in dg_products.Rows)
                 {
                     Product product = row.DataBoundItem as Product;
@@ -183,6 +186,42 @@ namespace C968
                 }
                 dg_products.ClearSelection();
 
+            }
+        }
+
+        private void btn_products_delete_Click(object sender, EventArgs e)
+        {
+            if (dg_products.SelectedRows.Count > 0) //are there products in the datagrid and 1 is selected 
+            {
+                int selectedIndex = dg_products.SelectedRows[0].Index;
+                Product selectedProduct = dg_products.Rows[selectedIndex].DataBoundItem as Product;
+
+
+                if (selectedProduct != null)
+                {
+
+                    DialogResult result = MessageBox.Show("Confirm Delete", "Wait", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
+                    {
+
+                        int id = selectedProduct.ProductID;
+                        if (Inventory.removeProduct(id))// Call your DeletePart function and check if it returns true
+                        {
+                            MessageBox.Show("Product deleted successfully.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the part.");
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Please select a part to delete.");
             }
         }
     }

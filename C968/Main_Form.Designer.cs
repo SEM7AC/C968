@@ -154,6 +154,7 @@
             btn_products_delete.TabIndex = 14;
             btn_products_delete.Text = "Delete";
             btn_products_delete.UseVisualStyleBackColor = true;
+            btn_products_delete.Click += btn_products_delete_Click;
             // 
             // btn_products_modify
             // 

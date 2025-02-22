@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace C968
 {
@@ -34,12 +28,18 @@ namespace C968
             Products.Add(product);
         }
 
-        //NOT IMPLEMENTED YET *******************************************
+        //Method to delete a product, why is it deletePart and not deleteProduct? UML change maybe
         public bool removeProduct(int id)
         {
-            return true; //change later
+            var product = Products.FirstOrDefault(p => p.ProductID == id);
+            if (product != null)
+            {
+                Products.Remove(product);
+                return true;
+            }
+            return false;
         }
-
+        
         //NOT IMPLEMENTED YET *******************************************
         public Product lookupProduct(int id)
         {
@@ -47,12 +47,19 @@ namespace C968
             return Products[id];
         }
 
-        //NOT IMPLEMENTED YET *******************************************
+        //Method for modifying product
         public void updateProduct(int id, Product product)
         {
-            //add later
+            var existingProduct = Products.FirstOrDefault(p => p.ProductID == id);
+            if (existingProduct != null)
+            {
+                int index = Products.IndexOf(existingProduct); //gets index of product same as part
+                Products[index] = product; //replaces modified part info.
+            }
         }
 
+                    
+              
         
         //Method for adding a part to AllParts
         public void addPart(Part part)
@@ -86,7 +93,7 @@ namespace C968
         //part information
         public void updatePart(int id, Part updatedPart)
         {
-            
+
             var existingPart = AllParts.FirstOrDefault(p => p.PartID == id);
             if (existingPart != null)
             {

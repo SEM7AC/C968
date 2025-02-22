@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace C968
+﻿namespace C968
 {
     public partial class Modify_Product : Form
     {
@@ -131,12 +121,91 @@ namespace C968
             _product.Max = int.Parse(tb_product_modify_max.Text);
             _product.Min = int.Parse(tb_product_modify_min.Text);
 
-            
+
 
             // Update the inventory and refresh the DataGridView in the main form
             Inventory.updateProduct(_product.ProductID, _product);
 
             this.Close();
+        }
+
+        private void tb_product_modify_name_TextChanged(object sender, EventArgs e)
+        {
+            // Validate Name textbox: Name must not be null or blank
+            if (string.IsNullOrWhiteSpace(tb_product_modify_name.Text))
+            {
+                ValidateHelper(tb_product_modify_name, false); //false keeps the color red-ish
+            }
+            else
+            {
+                ValidateHelper(tb_product_modify_name, true); //true will turn it white
+            }
+            CheckFormValidity();
+
+        }
+
+        private void tb_product_modify_inventory_TextChanged(object sender, EventArgs e)
+        {
+            // Validate Inventory textbox: Must be an int
+            if (!int.TryParse(tb_product_modify_inventory.Text, out int inventory))
+            {
+                ValidateHelper(tb_product_modify_inventory, false);
+
+            }
+            else
+            {
+                ValidateHelper(tb_product_modify_inventory, true);
+            }
+            CheckFormValidity();
+
+        }
+
+        private void tb_product_modify_price_TextChanged(object sender, EventArgs e)
+        {
+            // Validate Price textbox: Must be a decimal
+            if (!decimal.TryParse(tb_product_modify_price.Text, out decimal price))
+            {
+                ValidateHelper(tb_product_modify_price, false);
+
+            }
+            else
+            {
+                ValidateHelper(tb_product_modify_price, true);
+            }
+            CheckFormValidity();
+
+        }
+
+        private void tb_product_modify_max_TextChanged(object sender, EventArgs e)
+        {
+            // Validate Max textbox: Must be an int
+            if (!int.TryParse(tb_product_modify_max.Text, out int max))
+            {
+                ValidateHelper(tb_product_modify_max, false);
+
+            }
+            else
+            {
+                ValidateHelper(tb_product_modify_max, true);
+            }
+            CheckFormValidity();
+
+        }
+
+        private void tb_product_modify_min_TextChanged(object sender, EventArgs e)
+        {
+            // Validate Min textbox: Must be an int
+            if (!int.TryParse(tb_product_modify_min.Text, out int min))
+            {
+                ValidateHelper(tb_product_modify_min, false);
+
+            }
+            else
+            {
+                ValidateHelper(tb_product_modify_min, true);
+            }
+            CheckFormValidity();
+
         }
     }
 }

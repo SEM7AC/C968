@@ -1,3 +1,5 @@
+using System.Diagnostics.Eventing.Reader;
+
 namespace C968
 {
     public partial class Main_Form : Form
@@ -110,22 +112,36 @@ namespace C968
         //grid to match... 
         private void btn_parts_search_Click(object sender, EventArgs e)
         {
+                       
             string find = tb_parts_search.Text.ToLower();
 
-            foreach (DataGridViewRow row in dg_parts.Rows)
+
+            //If search box is empty make all fields white and clear selection
+            if (string.IsNullOrWhiteSpace(find))
             {
-                Part part = row.DataBoundItem as Part;
-                if (part != null && part.Name.ToLower().Contains(find))
-                {
-                    row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
-                }
-                else
+                foreach (DataGridViewRow row in dg_parts.Rows)
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
                 }
+                dg_parts.ClearSelection();
             }
-            dg_parts.ClearSelection();
 
+            else
+            {
+                foreach (DataGridViewRow row in dg_parts.Rows)
+                {
+                    Part part = row.DataBoundItem as Part;
+                    if (part != null && part.Name.ToLower().Contains(find))
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                    }
+                }
+                dg_parts.ClearSelection();
+            }
         }
 
         private void btn_products_add_Click(object sender, EventArgs e)
@@ -166,22 +182,26 @@ namespace C968
             {
                 string find = tb_products_search.Text.ToLower();
 
-                if (find == null)
-                {
-                    dg_products.ClearSelection();
-                }
-
-
-                foreach (DataGridViewRow row in dg_products.Rows)
-                {
-                    Product product = row.DataBoundItem as Product;
-                    if (product != null && product.Name.ToLower().Contains(find))
-                    {
-                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
-                    }
-                    else
+                if (string.IsNullOrWhiteSpace(find)) {
+                    foreach (DataGridViewRow row in dg_products.Rows)
                     {
                         row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                    }
+
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dg_products.Rows)
+                    {
+                        Product product = row.DataBoundItem as Product;
+                        if (product != null && product.Name.ToLower().Contains(find))
+                        {
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                        }
                     }
                 }
                 dg_products.ClearSelection();

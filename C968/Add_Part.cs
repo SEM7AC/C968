@@ -113,7 +113,7 @@
                 !string.IsNullOrWhiteSpace(tb_part_add_min.Text) &&
                 int.TryParse(tb_part_add_inventory.Text, out validInventory) &&
                 int.TryParse(tb_part_add_max.Text, out validMax) &&
-                int.TryParse(tb_part_add_min.Text, out validMin))
+                int.TryParse(tb_part_add_min.Text, out validMin)) // if not null and parse works store in validmin
             {
                 if (validMax < validInventory || validInventory < validMin)
                 {

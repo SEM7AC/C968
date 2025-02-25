@@ -2,16 +2,16 @@
 {
     public partial class Add_Part : Form
     {
-        private int partID;
+        private int partID; //stores unique partID
         
-        public Inventory Inventory { get; set; }
+        public Inventory Inventory { get; set; } //includes inventory
         public Add_Part(Inventory inventory) //Add_Part constructor
         {
             
             InitializeComponent();
             Inventory = inventory;
-            partID = Inventory.GeneratePartID();
-            tb_part_add_id.Text = partID.ToString();
+            partID = Inventory.GeneratePartID(); //gets unique partID
+            tb_part_add_id.Text = partID.ToString(); //sets readonly text box on form 
         }
 
         private void radioButton_inHouse_CheckedChanged(object sender, EventArgs e)
@@ -71,6 +71,10 @@
         }
         
         //Helper for validation code changes the backColor of the text box
+        /// <summary>
+        /// Change this section to not make it so complicated
+        /// </summary>
+        
 
         public void ValidateHelper(TextBox tb, bool isValid)
         {

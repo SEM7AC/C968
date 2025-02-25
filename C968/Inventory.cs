@@ -13,7 +13,7 @@ namespace C968
         //Method to increment partID when adding a part to inventory
         public static int GeneratePartID()
         {
-            return uniquePartID++; 
+            return uniquePartID++;
         }
 
         //Method to increment productID when adding a product to inventory
@@ -39,7 +39,7 @@ namespace C968
             }
             return false;
         }
-        
+
         //NOT IMPLEMENTED YET *******************************************
         public Product lookupProduct(int id)
         {
@@ -58,17 +58,17 @@ namespace C968
             }
         }
 
-                    
-              
-        
+
+
+
         //Method for adding a part to AllParts
         public void addPart(Part part)
         {
             AllParts.Add(part);
 
         }
-               
-        
+
+
         //Method for deleting a part from AllParts
         public bool deletePart(int id)
         {
@@ -101,24 +101,7 @@ namespace C968
                 AllParts[index] = updatedPart; //replaces modified part info.
             }
         }
-
-        //adding specific functions for inhouse and outsourced parts. Still uses add part but moved logic away
-        //from add_part form
-
-        public void addInhousePart(int partID, string name, decimal price, int inventory, int min, int max, int machineID)
-        {
-            
-            Part part = new Inhouse(partID, name, price, inventory, min, max, machineID);
-            addPart(part);
-        }
-
-        public void addOutsourcedPart(int partID, string name, decimal price, int inventory, int min, int max, string companyName)
-        {
-            
-            Part part = new Outsourced(partID, name, price, inventory, min, max, companyName);
-            addPart(part);
-
-
-        }
     }
+
+
 }

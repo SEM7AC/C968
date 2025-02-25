@@ -50,15 +50,18 @@
             if (rb_part_add_inHouse.Checked)
             {
                 // Save in-house part with machine ID
-                int machineID = int.Parse(mi_cn);
 
-                Inventory.addInhousePart(partID, partName, price, inventory, min, max, machineID);
+                int machineID = int.Parse(mi_cn);
+                Part NewInhousePart = new Inhouse(partID, partName, price, inventory, max, min, machineID);
+
+                Inventory.addPart(NewInhousePart);
 
             }
             else
             {
                 // Save outsourced part with company name
-                Inventory.addOutsourcedPart(partID, partName, price, inventory, min, max, mi_cn);
+                Part NewOutsourcedPart = new Outsourced(partID, partName, price, inventory, min, max, mi_cn);
+                Inventory.addPart(NewOutsourcedPart);
 
 
             }

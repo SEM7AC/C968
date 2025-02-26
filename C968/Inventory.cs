@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Security.Cryptography;
 
 namespace C968
 {
@@ -13,13 +14,13 @@ namespace C968
         //Method to increment partID when adding a part to inventory
         public static int GeneratePartID()
         {
-            return uniquePartID++;
+            return uniquePartID++; //increment after asignment
         }
 
         //Method to increment productID when adding a product to inventory
         public static int GenerateProductID()
         {
-            return uniqueProductID++;
+            return uniqueProductID++; //increment after assignment
         }
 
         //Method for adding a product
@@ -43,8 +44,12 @@ namespace C968
         //NOT IMPLEMENTED YET *******************************************
         public Product lookupProduct(int id)
         {
-            //add later
-            return Products[id];
+            var lookupProduct = Products.FirstOrDefault(p => p.ProductID == id);
+            if(lookupProduct == null)
+            {
+                MessageBox.Show("Product doesnt exist");
+            }
+            return lookupProduct;
         }
 
         //Method for modifying product
@@ -53,7 +58,7 @@ namespace C968
             var existingProduct = Products.FirstOrDefault(p => p.ProductID == id);
             if (existingProduct != null)
             {
-                int index = Products.IndexOf(existingProduct); //gets index of product same as part
+                int index = Products.IndexOf(existingProduct); //gets index of product 
                 Products[index] = product; //replaces modified part info.
             }
         }

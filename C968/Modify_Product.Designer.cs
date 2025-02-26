@@ -81,7 +81,7 @@
             btn_product_modify_cancel.TabIndex = 39;
             btn_product_modify_cancel.Text = "Cancel";
             btn_product_modify_cancel.UseVisualStyleBackColor = true;
-            btn_product_modify_cancel.Click += btn_modify_product_cancel_Click;
+            btn_product_modify_cancel.Click += btn_product_modify_cancel_Click;
             // 
             // btn_product_modify_save
             // 
@@ -111,6 +111,7 @@
             btn_product_modify_add.TabIndex = 36;
             btn_product_modify_add.Text = "Add";
             btn_product_modify_add.UseVisualStyleBackColor = true;
+            btn_product_modify_add.Click += btn_product_modify_add_Click;
             // 
             // btn_product_modify_search
             // 

@@ -101,10 +101,14 @@
 
         }
 
-
-        private void btn_modify_product_cancel_Click(object sender, EventArgs e)
+        private void btn_product_modify_add_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+        }
+
+        private void btn_product_modify_cancel_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btn_product_modify_delete_Click(object sender, EventArgs e)
@@ -128,6 +132,8 @@
 
             this.Close();
         }
+
+
 
         private void tb_product_modify_name_TextChanged(object sender, EventArgs e)
         {
@@ -207,5 +213,7 @@
             CheckFormValidity();
 
         }
+
+        
     }
 }

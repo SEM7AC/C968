@@ -18,21 +18,36 @@ namespace C968
 
         public int Max { get; set; }
 
+        //Method to add part to associated parts
         public void addAssociatedPart(Part part)
         {
             AssociatedParts.Add(part);
         }
 
+        //Method to remove associated part from product returns bool
         public bool removeAssociatedPart(int id)
         {
-            return true; //change this later
-        }
+            var removePart = lookupAssociatedPart(id);        
+            if(removePart != null)
+            {
+                AssociatedParts.Remove(removePart);
+                return true;
+            }
+            return false;
 
+        }
+        //Method for returning a part with the id parameter. Helps with remove/modify
         public Part lookupAssociatedPart(int id)
 
-        { 
-            //add later
-            return AssociatedParts[id];
+        {
+            var lookupAssociatedPart = AssociatedParts.FirstOrDefault(p => p.PartID == id);
+            if (lookupAssociatedPart == null)
+            {
+                MessageBox.Show("Part doesn't exist");
+            }
+            return lookupAssociatedPart;
+
         }
+
     }
 }

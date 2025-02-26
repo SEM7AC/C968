@@ -17,7 +17,7 @@ namespace C968
 
 
         }
-
+        //Preload the inventory with some parts and products... got tired of typing this in everytime I was testing.
         public void startup_helper()
         {
             Part part1 = new Inhouse(Inventory.GeneratePartID(), "Bolt", 5.00m, 100, 5, 150, 64 );
@@ -60,7 +60,7 @@ namespace C968
             Inventory.addProduct(product2); 
 
         }
-        
+
 
         //Exits the main_form
         private void btn_exit_Click(object sender, EventArgs e)

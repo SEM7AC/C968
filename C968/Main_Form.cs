@@ -11,9 +11,14 @@ namespace C968
         public Main_Form()
         {
             InitializeComponent();
+            
+            startup_helper();
+
             dg_parts.DataSource = Inventory.AllParts; //datagrid bindings
             dg_products.DataSource = Inventory.Products;
-            startup_helper();
+            
+            dg_parts.ClearSelection();
+            dg_products.ClearSelection();
 
 
         }
@@ -59,6 +64,7 @@ namespace C968
             Inventory.addProduct(product1);
             Inventory.addProduct(product2); 
 
+            
         }
 
 
@@ -155,7 +161,7 @@ namespace C968
 
         // Search function finds fist part.Name that contains what ever you 
         // type into the searchbox and changes the background color of the data
-        //grid to match... 
+        //grid to match... now if it could only select that row... maybe later.
         private void btn_parts_search_Click(object sender, EventArgs e)
         {
                        
@@ -168,6 +174,7 @@ namespace C968
                 foreach (DataGridViewRow row in dg_parts.Rows)
                 {
                     row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+
                 }
                 dg_parts.ClearSelection();
             }
@@ -181,6 +188,8 @@ namespace C968
                     if (part != null && part.Name.ToLower().Contains(find))
                     {
                         row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                        row.Selected = true;
+
                     }
                     else
                     {

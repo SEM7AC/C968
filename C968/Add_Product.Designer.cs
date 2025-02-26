@@ -268,7 +268,9 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dg_product_add_cp.DefaultCellStyle = dataGridViewCellStyle2;
             dg_product_add_cp.Location = new Point(275, 86);
+            dg_product_add_cp.MultiSelect = false;
             dg_product_add_cp.Name = "dg_product_add_cp";
+            dg_product_add_cp.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -287,7 +289,9 @@
             // 
             dg_product_add_ap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dg_product_add_ap.Location = new Point(275, 331);
+            dg_product_add_ap.MultiSelect = false;
             dg_product_add_ap.Name = "dg_product_add_ap";
+            dg_product_add_ap.ReadOnly = true;
             dg_product_add_ap.RowHeadersWidth = 51;
             dg_product_add_ap.Size = new Size(596, 188);
             dg_product_add_ap.TabIndex = 20;

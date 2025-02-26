@@ -59,7 +59,9 @@
             // 
             dg_modify_product_ap.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dg_modify_product_ap.Location = new Point(286, 326);
+            dg_modify_product_ap.MultiSelect = false;
             dg_modify_product_ap.Name = "dg_modify_product_ap";
+            dg_modify_product_ap.ReadOnly = true;
             dg_modify_product_ap.RowHeadersWidth = 51;
             dg_modify_product_ap.Size = new Size(596, 188);
             dg_modify_product_ap.TabIndex = 41;
@@ -68,7 +70,9 @@
             // 
             dg_modify_product_cp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dg_modify_product_cp.Location = new Point(286, 81);
+            dg_modify_product_cp.MultiSelect = false;
             dg_modify_product_cp.Name = "dg_modify_product_cp";
+            dg_modify_product_cp.ReadOnly = true;
             dg_modify_product_cp.RowHeadersWidth = 51;
             dg_modify_product_cp.Size = new Size(596, 188);
             dg_modify_product_cp.TabIndex = 40;

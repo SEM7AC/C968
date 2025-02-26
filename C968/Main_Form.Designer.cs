@@ -208,7 +208,9 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dg_parts.DefaultCellStyle = dataGridViewCellStyle2;
             dg_parts.Location = new Point(12, 135);
+            dg_parts.MultiSelect = false;
             dg_parts.Name = "dg_parts";
+            dg_parts.ReadOnly = true;
             dg_parts.RowHeadersVisible = false;
             dg_parts.RowHeadersWidth = 51;
             dg_parts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -237,7 +239,9 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
             dg_products.DefaultCellStyle = dataGridViewCellStyle4;
             dg_products.Location = new Point(750, 135);
+            dg_products.MultiSelect = false;
             dg_products.Name = "dg_products";
+            dg_products.ReadOnly = true;
             dg_products.RowHeadersVisible = false;
             dg_products.RowHeadersWidth = 51;
             dg_products.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

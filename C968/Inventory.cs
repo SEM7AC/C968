@@ -23,6 +23,10 @@ namespace C968
             return uniqueProductID++; //increment after assignment
         }
 
+        //********************
+        // PRODUCT METHODS ***
+        //********************
+
         //Method for adding a product
         public void addProduct(Product product)
         {
@@ -32,7 +36,7 @@ namespace C968
         //Method to delete a product, why is it deletePart and not deleteProduct? UML change maybe
         public bool removeProduct(int id)
         {
-            var product = Products.FirstOrDefault(p => p.ProductID == id);
+            var product = lookupProduct(id);
             if (product != null)
             {
                 Products.Remove(product);
@@ -41,13 +45,13 @@ namespace C968
             return false;
         }
 
-        //NOT IMPLEMENTED YET *******************************************
+        //Method to lookup Product in Products
         public Product lookupProduct(int id)
         {
             var lookupProduct = Products.FirstOrDefault(p => p.ProductID == id);
             if(lookupProduct == null)
             {
-                MessageBox.Show("Product doesnt exist");
+                MessageBox.Show("Product doesn't exist");
             }
             return lookupProduct;
         }
@@ -55,7 +59,7 @@ namespace C968
         //Method for modifying product
         public void updateProduct(int id, Product product)
         {
-            var existingProduct = Products.FirstOrDefault(p => p.ProductID == id);
+            var existingProduct = lookupProduct(id);
             if (existingProduct != null)
             {
                 int index = Products.IndexOf(existingProduct); //gets index of product 
@@ -63,7 +67,9 @@ namespace C968
             }
         }
 
-
+        //********************
+        // PART METHODS    ***
+        //********************
 
 
         //Method for adding a part to AllParts
@@ -73,11 +79,10 @@ namespace C968
 
         }
 
-
         //Method for deleting a part from AllParts
         public bool deletePart(int id)
         {
-            var part = AllParts.FirstOrDefault(p => p.PartID == id);
+            var part = lookupPart(id);
             if (part != null)
             {
                 AllParts.Remove(part);
@@ -86,11 +91,15 @@ namespace C968
             return false;
         }
 
-        //NOT IMPLEMENTED YET *******************************************
+        //Method to lookup Part in inventory by id
         public Part lookupPart(int id)
         {
-            //add later
-            return AllParts[id];
+            var lookupPart = AllParts.FirstOrDefault(p => p.PartID == id);
+            if (lookupPart == null)
+            {
+                MessageBox.Show("Part doesn't exist");
+            }
+            return lookupPart;
         }
 
         //Method used by the modify_part form. Find the part in AllParts using partID
@@ -99,7 +108,7 @@ namespace C968
         public void updatePart(int id, Part updatedPart)
         {
 
-            var existingPart = AllParts.FirstOrDefault(p => p.PartID == id);
+            var existingPart = lookupPart(id);
             if (existingPart != null)
             {
                 int index = AllParts.IndexOf(existingPart); //gets index of part

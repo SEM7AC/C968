@@ -28,7 +28,7 @@
 
         private void btn_part_cancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); //Closes form: Best cancel ever!
         }
 
         private void btn_part_save_Click(object sender, EventArgs e)
@@ -44,9 +44,8 @@
             string mi_cn = tb_part_add_mi_cn.Text;
 
             // Check if in-house or outsourced part
-
-
             // Perform the save operation
+
             if (rb_part_add_inHouse.Checked)
             {
                 // Save in-house part with machine ID
@@ -66,7 +65,7 @@
 
             }
 
-            this.Close();
+            this.Close(); //Close form
 
         }
         

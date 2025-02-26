@@ -13,9 +13,54 @@ namespace C968
             InitializeComponent();
             dg_parts.DataSource = Inventory.AllParts; //datagrid bindings
             dg_products.DataSource = Inventory.Products;
+            startup_helper();
 
 
         }
+
+        public void startup_helper()
+        {
+            Part part1 = new Inhouse(Inventory.GeneratePartID(), "Bolt", 5.00m, 100, 5, 150, 64 );
+            Part part2 = new Inhouse(Inventory.GeneratePartID(), "Washer", 0.10m, 100, 5, 150, 75);
+            Part part3 = new Outsourced(Inventory.GeneratePartID(), "Nut", 2.00m, 100, 5, 150, "Big Dave's LLC");
+            Part part4 = new Outsourced(Inventory.GeneratePartID(), "Lever", 2700.00m, 100, 1, 5, "Larry's Levers");
+            Inventory.addPart(part1);
+            Inventory.addPart(part2);
+            Inventory.addPart(part3);
+            Inventory.addPart(part4);
+
+            Product product1 = new Product
+            {
+                ProductID = Inventory.GenerateProductID(),
+                Name = "AS350B3 Astar",
+                Price = 1900000.00m,
+                Inventory = 5,
+                Min = 1,
+                Max = 10
+                
+            };
+
+            product1.addAssociatedPart(part1);
+            product1.addAssociatedPart(part2);
+            product1.addAssociatedPart(part3);
+
+            Product product2 = new Product
+            {
+                ProductID = Inventory.GenerateProductID(),
+                Name = "MD369F ~500~",
+                Price = 2700000.00m,
+                Inventory = 5,
+                Min = 1,
+                Max = 10
+            };
+
+            product2.addAssociatedPart(part4);
+
+            Inventory.addProduct(product1);
+            Inventory.addProduct(product2); 
+
+        }
+        
 
         //Exits the main_form
         private void btn_exit_Click(object sender, EventArgs e)
@@ -72,8 +117,9 @@ namespace C968
         {
             if (dg_parts.SelectedRows.Count > 0) //are there parts in the datagrid and 1 is selected 
             {
-                int selectedIndex = dg_parts.SelectedRows[0].Index;
+                int selectedIndex = dg_parts.SelectedRows[0].Index; //index of the datagrid
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
+                //finds DataBoundItem at selectedIndex and casts into Part
 
 
                 if (selectedPart != null)
@@ -126,11 +172,12 @@ namespace C968
                 dg_parts.ClearSelection();
             }
 
-            else
-            {
+            else  //Search using name field
+            {   
                 foreach (DataGridViewRow row in dg_parts.Rows)
                 {
                     Part part = row.DataBoundItem as Part;
+
                     if (part != null && part.Name.ToLower().Contains(find))
                     {
                         row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;

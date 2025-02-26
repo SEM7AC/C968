@@ -1,14 +1,27 @@
-﻿namespace C968
+﻿using System.ComponentModel;
+
+namespace C968
 {
     public partial class Modify_Product : Form
     {
         public Inventory Inventory { get; set; }
         private Product _product;
+        private BindingList<Part> _tempPartsList;
+        
+
         public Modify_Product(Product product, Inventory inventory)
         {
             InitializeComponent();
             Inventory = inventory;
             _product = product;
+            //instance and assigns current ap list to a temp so we can restore if
+            //necessary with the cancel button 
+            _tempPartsList = new BindingList<Part>(_product.AssociatedParts.ToList());
+
+
+
+            dg_modify_product_ap.DataSource = _product.AssociatedParts;
+            dg_modify_product_cp.DataSource = Inventory.AllParts;
 
             // Load the part data into the form controls
             tb_product_modify_ID.Text = product.ProductID.ToString();
@@ -17,6 +30,10 @@
             tb_product_modify_price.Text = product.Price.ToString();
             tb_product_modify_max.Text = product.Max.ToString();
             tb_product_modify_min.Text = product.Min.ToString();
+
+            
+
+
         }
 
         public void ValidateHelper(TextBox tb, bool isValid)
@@ -101,21 +118,61 @@
 
         }
 
+        //Method to add an associated part to product
         private void btn_product_modify_add_Click(object sender, EventArgs e)
         {
+            if (dg_modify_product_cp.SelectedRows.Count > 0) //are there parts in the datagrid and 1 is selected 
+            {
+                int selectedIndex = dg_modify_product_cp.SelectedRows[0].Index;
+                Part selectedPart = dg_modify_product_cp.Rows[selectedIndex].DataBoundItem as Part;
 
+
+                if (selectedPart != null)
+                {
+                    _product.addAssociatedPart(selectedPart);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No parts to associate");
+            }
         }
 
+        //Method to cancel and close form
         private void btn_product_modify_cancel_Click(object sender, EventArgs e)
         {
+            //The textbox data wont change until the save button is pressed, but the associated parts will
+            //this restores the old list when the cancel button is pressed before closing the form
+            // Restore the associated parts from the temporary BindingList
+            _product.AssociatedParts = new BindingList<Part>(_tempPartsList.ToList());
+
+            // Close the form
+            this.Close();
 
         }
 
+        //Method for deleting and associated part
         private void btn_product_modify_delete_Click(object sender, EventArgs e)
         {
+            if (dg_modify_product_ap.SelectedRows.Count > 0) //are there parts in the datagrid and 1 is selected 
+            {
+                int selectedIndex = dg_modify_product_ap.SelectedRows[0].Index;
+                Part selectedPart = dg_modify_product_ap.Rows[selectedIndex].DataBoundItem as Part;
+
+
+                if (selectedPart != null)
+                {
+                    _product.removeAssociatedPart(selectedPart.PartID);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No parts to remove/disassociate");
+            }
 
         }
 
+        //Method for saving modified product info
         private void btn_product_modify_save_Click(object sender, EventArgs e)
         {
             // Retrieve updated data from textboxes
@@ -125,9 +182,7 @@
             _product.Max = int.Parse(tb_product_modify_max.Text);
             _product.Min = int.Parse(tb_product_modify_min.Text);
 
-
-
-            // Update the inventory and refresh the DataGridView in the main form
+            // Update the product passing the ID and _product with updated info
             Inventory.updateProduct(_product.ProductID, _product);
 
             this.Close();

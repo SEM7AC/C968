@@ -62,7 +62,9 @@
             dg_modify_product_ap.MultiSelect = false;
             dg_modify_product_ap.Name = "dg_modify_product_ap";
             dg_modify_product_ap.ReadOnly = true;
+            dg_modify_product_ap.RowHeadersVisible = false;
             dg_modify_product_ap.RowHeadersWidth = 51;
+            dg_modify_product_ap.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_modify_product_ap.Size = new Size(596, 188);
             dg_modify_product_ap.TabIndex = 41;
             // 
@@ -73,7 +75,9 @@
             dg_modify_product_cp.MultiSelect = false;
             dg_modify_product_cp.Name = "dg_modify_product_cp";
             dg_modify_product_cp.ReadOnly = true;
+            dg_modify_product_cp.RowHeadersVisible = false;
             dg_modify_product_cp.RowHeadersWidth = 51;
+            dg_modify_product_cp.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dg_modify_product_cp.Size = new Size(596, 188);
             dg_modify_product_cp.TabIndex = 40;
             // 
@@ -132,7 +136,7 @@
             tb_product_modify_max.Location = new Point(90, 314);
             tb_product_modify_max.Name = "tb_product_modify_max";
             tb_product_modify_max.Size = new Size(125, 27);
-            tb_product_modify_max.TabIndex = 34;
+            tb_product_modify_max.TabIndex = 33;
             tb_product_modify_max.TextChanged += tb_product_modify_max_TextChanged;
             // 
             // tb_product_modify_min
@@ -141,7 +145,7 @@
             tb_product_modify_min.Location = new Point(90, 356);
             tb_product_modify_min.Name = "tb_product_modify_min";
             tb_product_modify_min.Size = new Size(125, 27);
-            tb_product_modify_min.TabIndex = 33;
+            tb_product_modify_min.TabIndex = 34;
             tb_product_modify_min.TextChanged += tb_product_modify_min_TextChanged;
             // 
             // tb_product_modify_price
@@ -175,6 +179,7 @@
             // 
             tb_product_modify_ID.BackColor = Color.FromArgb(224, 224, 224);
             tb_product_modify_ID.BorderStyle = BorderStyle.FixedSingle;
+            tb_product_modify_ID.Enabled = false;
             tb_product_modify_ID.Location = new Point(90, 146);
             tb_product_modify_ID.Name = "tb_product_modify_ID";
             tb_product_modify_ID.ReadOnly = true;

@@ -1,16 +1,21 @@
-﻿namespace C968
+﻿using System.ComponentModel;
+
+namespace C968
 {
 
     public partial class Add_Product : Form
     {
         private int productID; //Unique ID for products
+        private BindingList<Part> temp_ap;
 
         public Inventory Inventory { get; set; }
         public Add_Product(Inventory inventory)
         {
             InitializeComponent();
             Inventory = inventory;
+            temp_ap = new BindingList<Part>();
             dg_product_add_cp.DataSource = Inventory.AllParts;
+            dg_product_add_ap.DataSource = temp_ap; //add associated parts to datagrid
 
             productID = Inventory.GenerateProductID();
             tb_product_add_ID.Text = productID.ToString();
@@ -33,6 +38,7 @@
             int min = int.Parse(tb_product_add_min.Text);
 
 
+
             Product new_product = new Product();
             new_product.ProductID = productID;
             new_product.Name = productName;
@@ -40,15 +46,31 @@
             new_product.Price = price;
             new_product.Max = max;
             new_product.Min = min;
+            
+            if (dg_product_add_ap.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dg_product_add_ap.Rows)
+                {
+                    Part part = row.DataBoundItem as Part;
+                    new_product.addAssociatedPart(part);
+                }
+            }
 
             Inventory.Products.Add(new_product);
-
+            
 
             this.Close();
         }
         private void btn_product_add_add_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Add Button Clicked");
+            if (dg_product_add_cp.SelectedRows.Count > 0) //are there parts in the datagrid and 1 is selected 
+            {
+                int selectedIndex = dg_product_add_cp.SelectedRows[0].Index;
+                Part selectedPart = dg_product_add_cp.Rows[selectedIndex].DataBoundItem as Part;
+                temp_ap.Add(selectedPart);
+
+
+            }
         }
         private void btn_add_product_delete_Click(object sender, EventArgs e)
         {

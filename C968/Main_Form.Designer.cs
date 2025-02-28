@@ -66,7 +66,7 @@
             // 
             lbl_parts.AutoSize = true;
             lbl_parts.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbl_parts.Location = new Point(12, 95);
+            lbl_parts.Location = new Point(9, 99);
             lbl_parts.Name = "lbl_parts";
             lbl_parts.Size = new Size(61, 28);
             lbl_parts.TabIndex = 1;
@@ -76,7 +76,7 @@
             // 
             lbl_products.AutoSize = true;
             lbl_products.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbl_products.Location = new Point(923, 104);
+            lbl_products.Location = new Point(750, 100);
             lbl_products.Name = "lbl_products";
             lbl_products.Size = new Size(95, 28);
             lbl_products.TabIndex = 2;
@@ -106,6 +106,7 @@
             // 
             tb_parts_search.Location = new Point(511, 99);
             tb_parts_search.Name = "tb_parts_search";
+            tb_parts_search.PlaceholderText = "Search by Name";
             tb_parts_search.Size = new Size(225, 27);
             tb_parts_search.TabIndex = 7;
             // 
@@ -113,6 +114,7 @@
             // 
             tb_products_search.Location = new Point(1249, 99);
             tb_products_search.Name = "tb_products_search";
+            tb_products_search.PlaceholderText = "Search by Name";
             tb_products_search.Size = new Size(225, 27);
             tb_products_search.TabIndex = 8;
             // 
@@ -208,7 +210,6 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dg_parts.DefaultCellStyle = dataGridViewCellStyle2;
             dg_parts.Location = new Point(12, 135);
-            dg_parts.MultiSelect = false;
             dg_parts.Name = "dg_parts";
             dg_parts.ReadOnly = true;
             dg_parts.RowHeadersVisible = false;
@@ -239,7 +240,6 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
             dg_products.DefaultCellStyle = dataGridViewCellStyle4;
             dg_products.Location = new Point(750, 135);
-            dg_products.MultiSelect = false;
             dg_products.Name = "dg_products";
             dg_products.ReadOnly = true;
             dg_products.RowHeadersVisible = false;

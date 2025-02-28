@@ -173,6 +173,7 @@
             // 
             // tb_product_modify_ID
             // 
+            tb_product_modify_ID.BackColor = Color.FromArgb(224, 224, 224);
             tb_product_modify_ID.BorderStyle = BorderStyle.FixedSingle;
             tb_product_modify_ID.Location = new Point(90, 146);
             tb_product_modify_ID.Name = "tb_product_modify_ID";
@@ -280,6 +281,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(224, 224, 224);
             ClientSize = new Size(997, 566);
             Controls.Add(lbl_modify_product_ap);
             Controls.Add(lbl_modify_product_cp);

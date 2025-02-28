@@ -16,9 +16,10 @@ namespace C968
 
             dg_parts.DataSource = Inventory.AllParts; //datagrid bindings
             dg_products.DataSource = Inventory.Products;
-            
+
             dg_parts.ClearSelection();
             dg_products.ClearSelection();
+           
 
 
         }
@@ -28,7 +29,7 @@ namespace C968
             Part part1 = new Inhouse(Inventory.GeneratePartID(), "Bolt", 5.00m, 100, 5, 150, 64 );
             Part part2 = new Inhouse(Inventory.GeneratePartID(), "Washer", 0.10m, 100, 5, 150, 75);
             Part part3 = new Outsourced(Inventory.GeneratePartID(), "Nut", 2.00m, 100, 5, 150, "Big Dave's LLC");
-            Part part4 = new Outsourced(Inventory.GeneratePartID(), "Lever", 2700.00m, 100, 1, 5, "Larry's Levers");
+            Part part4 = new Outsourced(Inventory.GeneratePartID(), "Lever", 2700.00m, 5, 1, 10, "Larry's Levers");
             Inventory.addPart(part1);
             Inventory.addPart(part2);
             Inventory.addPart(part3);
@@ -62,9 +63,12 @@ namespace C968
             product2.addAssociatedPart(part4);
 
             Inventory.addProduct(product1);
-            Inventory.addProduct(product2); 
+            Inventory.addProduct(product2);
 
             
+            dg_parts.ClearSelection();
+            dg_products.ClearSelection(); // this doesnt work and i dont know why
+
         }
 
 
@@ -117,7 +121,7 @@ namespace C968
 
 
         }
-        //Delete Part function, checks for part selection within datagrad and asks for a confirmation
+        //Delete Part function, checks for part selection within datagrid and asks for a confirmation
         //Also gives notification that the part has been deleted or if there was an error
         private void btn_parts_delete_Click(object sender, EventArgs e)
         {
@@ -131,7 +135,7 @@ namespace C968
                 if (selectedPart != null)
                 {
 
-                    DialogResult result = MessageBox.Show("Confirm Delete", "Wait", MessageBoxButtons.YesNo,
+                    DialogResult result = MessageBox.Show("Confirm Delete", "Are you sure?!?", MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
@@ -164,8 +168,9 @@ namespace C968
         //grid to match... now if it could only select that row... maybe later.
         private void btn_parts_search_Click(object sender, EventArgs e)
         {
-                       
+
             string find = tb_parts_search.Text.ToLower();
+            bool partFound = false;
 
 
             //If search box is empty make all fields white and clear selection
@@ -180,7 +185,7 @@ namespace C968
             }
 
             else  //Search using name field
-            {   
+            {
                 foreach (DataGridViewRow row in dg_parts.Rows)
                 {
                     Part part = row.DataBoundItem as Part;
@@ -189,14 +194,22 @@ namespace C968
                     {
                         row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
                         row.Selected = true;
+                        partFound = true; //flag for part not found messegebox
 
                     }
                     else
                     {
                         row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+
                     }
+
                 }
+
                 dg_parts.ClearSelection();
+                if (!partFound)
+                {
+                    MessageBox.Show("Part not found!", "Search Error", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -237,6 +250,7 @@ namespace C968
         {
             {
                 string find = tb_products_search.Text.ToLower();
+                bool productFound= false;
 
                 if (string.IsNullOrWhiteSpace(find)) {
                     foreach (DataGridViewRow row in dg_products.Rows)
@@ -253,15 +267,22 @@ namespace C968
                         if (product != null && product.Name.ToLower().Contains(find))
                         {
                             row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                            productFound = true;
                         }
                         else
                         {
                             row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+                            
                         }
+                        
+                    }
+                    dg_products.ClearSelection();
+                    if (!productFound)
+                    {
+                        MessageBox.Show("Product not found!", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                dg_products.ClearSelection();
-
+                
             }
         }
 

@@ -51,7 +51,7 @@
                 // Save in-house part with machine ID
 
                 int machineID = int.Parse(mi_cn);
-                Part NewInhousePart = new Inhouse(partID, partName, price, inventory, max, min, machineID);
+                Part NewInhousePart = new Inhouse(partID, partName, price, inventory, min, max, machineID);
 
                 Inventory.addPart(NewInhousePart);
 

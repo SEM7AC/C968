@@ -135,6 +135,7 @@
             // 
             tb_part_modify_id.BackColor = Color.FromArgb(224, 224, 224);
             tb_part_modify_id.BorderStyle = BorderStyle.FixedSingle;
+            tb_part_modify_id.Enabled = false;
             tb_part_modify_id.Location = new Point(215, 99);
             tb_part_modify_id.Margin = new Padding(3, 4, 3, 4);
             tb_part_modify_id.Name = "tb_part_modify_id";

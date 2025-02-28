@@ -1,7 +1,12 @@
-﻿namespace C968
+﻿using System.Diagnostics;
+using System.Reflection.PortableExecutable;
+
+namespace C968
 {
     public partial class Modify_Part : Form
     {
+       
+
         private Part _modifyPart;
         public Inventory Inventory { get; set; }
         public Modify_Part(Part part, Inventory inventory)
@@ -10,8 +15,7 @@
 
             _modifyPart = part;     //saves the reference to the part obj that is passed into the form
             Inventory = inventory;  // Inventory passed from main form.
-                                    //this is needed when save/updating an existing part instead of creating 
-                                    //a new part obj.
+             
 
             // Load the part data into the form controls
             tb_part_modify_id.Text = part.PartID.ToString();
@@ -26,12 +30,14 @@
                 rb_part_modify_inHouse.Checked = true;
                 lbl_part_modify_mi_cn.Text = "Machine ID";
                 tb_part_modify_mi_cn.Text = inHousePart.MachineID.ToString();
+
             }
-            else if (part is Outsourced outsourcedPart) //the is keyward is super useful
+            else if (part is Outsourced outsourcedPart) //the is keyword is super useful
             {
                 rb_part_modify_outsourced.Checked = true;
                 lbl_part_modify_mi_cn.Text = "Company Name";
                 tb_part_modify_mi_cn.Text = outsourcedPart.CompanyName;
+
             }
         }
 
@@ -150,14 +156,53 @@
             _modifyPart.Price = decimal.Parse(tb_part_modify_priceCost.Text);
             _modifyPart.Max = int.Parse(tb_part_modify_max.Text);
             _modifyPart.Min = int.Parse(tb_part_modify_min.Text);
+           
 
-            if (_modifyPart is Inhouse inhousePart)
-            {
-                inhousePart.MachineID = int.Parse(tb_part_modify_mi_cn.Text);
+             if (rb_part_modify_inHouse.Checked ) //inhouse checked
+             {
+                if (_modifyPart is Inhouse ih_part) //part is inhouse type
+                {
+                    // Update existing Inhouse part
+                    ih_part.MachineID = int.Parse(tb_part_modify_mi_cn.Text); //convert for inhouse 
+                }
+                else //if not Inhouse create a new part with old ID  
+                {
+                    int PartID = _modifyPart.PartID;
+                    string Name = _modifyPart.Name;
+                    decimal Price = _modifyPart.Price;
+                    int Inventory = _modifyPart.Inventory;
+                    int Min = _modifyPart.Min;
+                    int Max = _modifyPart.Max;
+                    int MachineID = int.Parse(tb_part_modify_mi_cn.Text);
+                    // Create new Inhouse part
+                    _modifyPart = new Inhouse(PartID,Name,Price,Inventory,Min,Max,MachineID);
+                    
+                        
+                    
+                }
             }
-            else if (_modifyPart is Outsourced outsourcedPart)
+            else if (rb_part_modify_outsourced.Checked ) //if outsoucred is checked
             {
-                outsourcedPart.CompanyName = tb_part_modify_mi_cn.Text;
+            
+                if (_modifyPart is Outsourced os_part) //and it is an outsourced part
+                {
+                    // Update existing Outsourced part
+                    os_part.CompanyName = tb_part_modify_mi_cn.Text;
+                }
+                else //create a new outsourced part with old ID
+                {
+                    int PartID = _modifyPart.PartID;
+                    string Name = _modifyPart.Name;
+                    int Inventory = _modifyPart.Inventory;
+                    decimal Price = _modifyPart.Price;
+                    int Max = _modifyPart.Max;
+                    int Min = _modifyPart.Min;
+                    string CompanyName = tb_part_modify_mi_cn.Text;
+                    // Create new Outsourced part
+                    _modifyPart = new Outsourced(PartID, Name, Price, Inventory, Min, Max, CompanyName);
+
+
+                }
             }
 
             // Update the inventory and refresh the DataGridView in the main form

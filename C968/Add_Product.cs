@@ -78,7 +78,48 @@ namespace C968
         }
         private void btn_product_add_search_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Search Button Clicked");
+            string find = tb_product_add_search.Text.ToLower();
+            bool partFound = false;
+
+
+            //If search box is empty make all fields white and clear selection
+            if (string.IsNullOrWhiteSpace(find))
+            {
+                foreach (DataGridViewRow row in dg_product_add_cp.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+
+                }
+                dg_product_add_cp.ClearSelection();
+            }
+
+            else  //Search using name field
+            {
+                foreach (DataGridViewRow row in dg_product_add_cp.Rows)
+                {
+                    Part part = row.DataBoundItem as Part;
+
+                    if (part != null && part.Name.ToLower().Contains(find))
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                        row.Selected = true;
+                        partFound = true; //flag for part not found messegebox
+
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+
+                    }
+
+                }
+
+                dg_product_add_cp.ClearSelection();
+                if (!partFound)
+                {
+                    MessageBox.Show("Part not found!", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
 

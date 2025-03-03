@@ -129,6 +129,7 @@
             btn_product_modify_search.TabIndex = 35;
             btn_product_modify_search.Text = "Search";
             btn_product_modify_search.UseVisualStyleBackColor = true;
+            btn_product_modify_search.Click += btn_product_modify_search_Click;
             // 
             // tb_product_modify_max
             // 

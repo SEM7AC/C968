@@ -7,7 +7,7 @@ namespace C968
         public Inventory Inventory { get; set; }
         private Product _product;
         private BindingList<Part> _tempPartsList;
-        
+
 
         public Modify_Product(Product product, Inventory inventory)
         {
@@ -31,7 +31,7 @@ namespace C968
             tb_product_modify_max.Text = product.Max.ToString();
             tb_product_modify_min.Text = product.Min.ToString();
 
-            
+
 
 
         }
@@ -269,6 +269,50 @@ namespace C968
 
         }
 
-        
+        private void btn_product_modify_search_Click(object sender, EventArgs e)
+        {
+            string find = tb_product_modify_search.Text.ToLower();
+            bool partFound = false;
+
+
+            //If search box is empty make all fields white and clear selection
+            if (string.IsNullOrWhiteSpace(find))
+            {
+                foreach (DataGridViewRow row in dg_modify_product_cp.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+
+                }
+                dg_modify_product_cp.ClearSelection();
+            }
+
+            else  //Search using name field
+            {
+                foreach (DataGridViewRow row in dg_modify_product_cp.Rows)
+                {
+                    Part part = row.DataBoundItem as Part;
+
+                    if (part != null && part.Name.ToLower().Contains(find))
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.Yellow;
+                        row.Selected = true;
+                        partFound = true; //flag for part not found messegebox
+
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+
+                    }
+
+                }
+
+                dg_modify_product_cp.ClearSelection();
+                if (!partFound)
+                {
+                    MessageBox.Show("Part not found!", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

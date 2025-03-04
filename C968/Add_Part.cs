@@ -3,7 +3,9 @@
     public partial class Add_Part : Form
     {
         private int partID; //stores unique partID
+
         
+
         public Inventory Inventory { get; set; } //includes inventory
         public Add_Part(Inventory inventory) //Add_Part constructor
         {
@@ -33,6 +35,7 @@
 
         private void btn_part_save_Click(object sender, EventArgs e)
         {
+            CheckFormValidity();
 
             // Retrieve data from textboxes
             int partID = int.Parse(tb_part_add_id.Text);
@@ -88,8 +91,109 @@
 
         }
 
-        private void CheckFormValidity()
+        
+        public void CheckFormComplete()
         {
+            bool isComplete = true;
+
+            // Check if the Name textbox is not null or whitespace
+            if (string.IsNullOrWhiteSpace(tb_part_add_name.Text))
+            {
+                isComplete = false;
+            }
+            else
+            {
+                isComplete = isComplete && true;
+            }
+
+            // Check if the Inventory textbox contains a valid integer
+            if (!int.TryParse(tb_part_add_inventory.Text, out _))
+            {
+                isComplete = false;
+            }
+            else
+            {
+                isComplete = isComplete && true;
+            }
+
+            // Check if the Price/Cost textbox contains a valid decimal
+            if (!decimal.TryParse(tb_part_add_priceCost.Text, out _))
+            {
+                isComplete = false;
+            }
+            else
+            {
+                isComplete = isComplete && true;
+            }
+
+            // Check if the Max textbox contains a valid integer
+            if (!int.TryParse(tb_part_add_max.Text, out _))
+            {
+                isComplete = false;
+            }
+            else
+            {
+                isComplete = isComplete && true;
+            }
+
+            // Check if the Min textbox contains a valid integer
+            if (!int.TryParse(tb_part_add_min.Text, out _))
+            {
+                isComplete = false;
+            }
+            else
+            {
+                isComplete = isComplete && true;
+            }
+
+            // Check Machine ID/Company Name based on radio button selection
+            if (rb_part_add_inHouse.Checked)
+            {
+                // Validate Machine ID as an integer
+                if (!int.TryParse(tb_part_add_mi_cn.Text, out _))
+                {
+                    isComplete = false;
+                }
+                else
+                {
+                    isComplete = isComplete && true;
+                }
+            }
+            else if (rb_part_add_outsourced.Checked)
+            {
+                // Validate Company Name is not null or blank
+                if (string.IsNullOrWhiteSpace(tb_part_add_mi_cn.Text))
+                {
+                    isComplete = false;
+                }
+                else
+                {
+                    isComplete = isComplete && true;
+                }
+            }
+            // Enable or disable the save button based on the total form validation
+            btn_part_add_save.Enabled = isComplete;
+
+            if (btn_part_add_save.Enabled)
+            {
+                btn_part_add_save.BackColor = Color.Green;
+                btn_part_add_save.ForeColor = Color.White;
+                btn_part_add_save.FlatStyle = FlatStyle.Standard;
+            }
+            else
+            {
+                btn_part_add_save.BackColor = Color.Gray;
+                btn_part_add_save.ForeColor = Color.DarkGray;
+                btn_part_add_save.FlatStyle = FlatStyle.Flat;
+                btn_part_add_save.FlatAppearance.BorderColor = Color.DarkGray;
+            }
+        }
+        public void CheckFormValidity()
+        {
+            
+            
+            
+            
             bool isFormValid = true;
 
             int validInventory =0;
@@ -141,23 +245,8 @@
                     tb_part_add_min.Clear();
                 }
             }
-            
-            // Enable or disable the save button based on the total form validation
-            btn_part_add_save.Enabled = isFormValid;
 
-            if (btn_part_add_save.Enabled)
-            {
-                btn_part_add_save.BackColor = Color.Green;
-                btn_part_add_save.ForeColor = Color.White;
-                btn_part_add_save.FlatStyle = FlatStyle.Standard;
-            }
-            else
-            {
-                btn_part_add_save.BackColor = Color.Gray;
-                btn_part_add_save.ForeColor = Color.DarkGray;
-                btn_part_add_save.FlatStyle = FlatStyle.Flat;
-                btn_part_add_save.FlatAppearance.BorderColor = Color.DarkGray;
-            }
+
 
         }
 
@@ -167,8 +256,8 @@
         // This section contains all TextChanged events and performs validation          /
         // Validation for each textbox happens as data is entered                        /
         // Helper Function to change color of textbox if validation passes               /
-        // Full form validation is called after each event to validate form and perform  /
-        // final validation requiring all fields to be filled in with valid data.        /
+        // Full form validation is called after save button is pressed to validate form  /
+        // as a whole... this was in the testing requirements...                         /
         /********************************************************************************/
         private void tb_part_add_name_TextChanged(object sender, EventArgs e)
         {
@@ -182,7 +271,7 @@
             {
                 ValidateHelper(tb_part_add_name, true); //true will turn it white
             }
-            CheckFormValidity();
+            CheckFormComplete();
         }
 
         private void tb_part_add_inventory_TextChanged(object sender, EventArgs e)
@@ -197,7 +286,7 @@
             {
                 ValidateHelper(tb_part_add_inventory, true);
             }
-            CheckFormValidity();
+            CheckFormComplete();
         }
 
         private void tb_part_add_priceCost_TextChanged(object sender, EventArgs e)
@@ -212,7 +301,7 @@
             {
                 ValidateHelper(tb_part_add_priceCost, true);
             }
-            CheckFormValidity();
+            CheckFormComplete();
         }
 
         private void tb_part_add_max_TextChanged(object sender, EventArgs e)
@@ -227,7 +316,7 @@
             {
                 ValidateHelper(tb_part_add_max, true);
             }
-            CheckFormValidity();
+            CheckFormComplete();
         }
 
         private void tb_part_add_min_TextChanged(object sender, EventArgs e)
@@ -242,14 +331,14 @@
             {
                 ValidateHelper(tb_part_add_min, true);
             }
-            CheckFormValidity();
+            CheckFormComplete();
         }
 
         private void tb_part_add_mi_cn_TextChanged(object sender, EventArgs e)
         {
             // Validate MachineID / Company Name depending on radio button selection either int or string
             // Its fixed finnaly
-            if (rb_part_add_inHouse.Checked && !int.TryParse(tb_part_add_mi_cn.Text, out int machineID))
+            if (rb_part_add_inHouse.Checked && !int.TryParse(tb_part_add_mi_cn.Text, out _))
             {
                 ValidateHelper(tb_part_add_mi_cn, false);
                 
@@ -268,7 +357,7 @@
             {
                 ValidateHelper(tb_part_add_mi_cn, true);
             }
-            CheckFormValidity();
+            CheckFormComplete();
         }
     }
 }

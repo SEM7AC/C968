@@ -8,6 +8,14 @@ namespace C968
        
 
         private Part _modifyPart;
+        
+        private bool isNameValid = false; //Flags for validation
+        private bool isInvValid = false;
+        private bool isPriceValid = false;
+        private bool isMaxValid = false;
+        private bool isMinValid = false;
+        private bool isMICN_Valid = false;
+
         public Inventory Inventory { get; set; }
         public Modify_Part(Part part, Inventory inventory)
         {
@@ -41,96 +49,7 @@ namespace C968
             }
         }
 
-        public void ValidateHelper(TextBox tb, bool isValid)
-        {
-            if (tb != null && isValid == true)
-            {
-                tb.BackColor = Color.White;
-            }
-            else
-            {
-                tb.BackColor = Color.Coral;
-            }
-
-        }
-
-        private void CheckFormValidity()
-        {
-            bool isFormValid = true;
-
-            int validInventory = 0;
-            int validMax = 0;
-            int validMin = 0;
-            // Check each TextBox's validation
-            isFormValid &= !string.IsNullOrWhiteSpace(tb_part_modify_name.Text);
-            isFormValid &= int.TryParse(tb_part_modify_inventory.Text, out validInventory);
-            isFormValid &= decimal.TryParse(tb_part_modify_priceCost.Text, out _);
-            isFormValid &= int.TryParse(tb_part_modify_max.Text, out validMax);
-            isFormValid &= int.TryParse(tb_part_modify_min.Text, out validMin);
-
-            if (rb_part_modify_inHouse.Checked)
-            {
-                isFormValid &= int.TryParse(tb_part_modify_mi_cn.Text, out _);
-            }
-            else if (rb_part_modify_outsourced.Checked)
-            {
-                isFormValid &= !string.IsNullOrWhiteSpace(tb_part_modify_mi_cn.Text);
-            }
-
-            // Additional validation requirements: max > inventory > min
-            // All three field must be entered before this check otherwise it gets annoying....
-            // Additional validation requirements: max > inventory > min
-
-            //Should consider using temp variables to reset min/max/values instead of clearing them
-            //But this is also solved without saving the form and hitting cancel....
-            if (!string.IsNullOrWhiteSpace(tb_part_modify_inventory.Text) &&
-                !string.IsNullOrWhiteSpace(tb_part_modify_max.Text) &&
-                !string.IsNullOrWhiteSpace(tb_part_modify_min.Text) &&
-                int.TryParse(tb_part_modify_inventory.Text, out validInventory) &&
-                int.TryParse(tb_part_modify_max.Text, out validMax) &&
-                int.TryParse(tb_part_modify_min.Text, out validMin))
-            {
-                if (validMax < validInventory || validInventory < validMin)
-                {
-                    isFormValid = false;
-                    MessageBox.Show("Inventory must be between Max and Min values", "Out of Range",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tb_part_modify_inventory.Clear();
-                    tb_part_modify_max.Clear();
-                    tb_part_modify_min.Clear();
-                }
-
-                if (validMin > validMax)
-                {
-                    isFormValid = false;
-                    MessageBox.Show("Min cannot be greater than Max", "Min/Max",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tb_part_modify_inventory.Clear();
-                    tb_part_modify_max.Clear();
-                    tb_part_modify_min.Clear();
-                }
-            }
-            //check requirements for anyonther validation and add them above this comment.....
-
-            // Enable or disable the save button
-            btn_part_modify_save.Enabled = isFormValid;
-
-            if (btn_part_modify_save.Enabled)
-            {
-                btn_part_modify_save.BackColor = Color.Green;
-                btn_part_modify_save.ForeColor = Color.White;
-                btn_part_modify_save.FlatStyle = FlatStyle.Standard;
-            }
-            else
-            {
-                btn_part_modify_save.BackColor = Color.Gray;
-                btn_part_modify_save.ForeColor = Color.DarkGray;
-                btn_part_modify_save.FlatStyle = FlatStyle.Flat;
-                btn_part_modify_save.FlatAppearance.BorderColor = Color.DarkGray;
-            }
-
-        }
-
+       
         //Change Label depending on radio button selection
         private void rb_part_modify_inHouse_CheckedChanged(object sender, EventArgs e)
         {
@@ -141,8 +60,7 @@ namespace C968
         {
             lbl_part_modify_mi_cn.Text = "Company Name";
         }
-
-        //Cancel the modify and discard the changes
+                
         private void btn_part_modify_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -150,6 +68,13 @@ namespace C968
 
         private void btn_part_modify_save_Click(object sender, EventArgs e)
         {
+            CheckFormValidity();
+            if (!btn_part_modify_save.Enabled)
+            {
+                // Abort if the form is invalid
+                return;
+            }
+
             // Retrieve updated data from textboxes
             _modifyPart.Name = tb_part_modify_name.Text;
             _modifyPart.Inventory = int.Parse(tb_part_modify_inventory.Text);
@@ -210,112 +135,161 @@ namespace C968
 
             this.Close();
         }
-        /********************************************************************************/
-        // This section contains all TextChanged events and performs validation          /
-        // Validation for each textbox happens as data is entered                        /
-        // Helper Function to change color of textbox if validation passes               /
-        // Full form validation is called after each event to validate form and perform  /
-        // final validation requiring all fields to be filled in with valid data.        /
-        /********************************************************************************/
-        private void tb_part_modify_name_TextChanged(object sender, EventArgs e)
-        {
 
-            // Validate Name textbox: Name must not be null or blank
-            if (string.IsNullOrWhiteSpace(tb_part_modify_name.Text))
+        /*--- Same validation as the Add_Part form ---*/
+
+        public void ValidateHelper(TextBox tb, bool isValid)
+        {
+            if (tb != null && isValid == true)
             {
-                ValidateHelper(tb_part_modify_name, false); //false keeps the color red-ish
+                tb.BackColor = Color.White;
             }
             else
             {
-                ValidateHelper(tb_part_modify_name, true); //true will turn it white
+                tb.BackColor = Color.Coral;
             }
-            CheckFormValidity();
+
+        }
+
+        public void CheckFormComplete()
+        {
+            bool isComplete = isNameValid && isInvValid && isPriceValid &&
+                              isMaxValid && isMinValid && isMICN_Valid; //Global flags for validation
+
+
+
+            // Enable or disable the save button based on the total form validation
+            btn_part_modify_save.Enabled = isComplete;
+
+            if (btn_part_modify_save.Enabled)
+            {
+                btn_part_modify_save.BackColor = Color.Green;
+                btn_part_modify_save.ForeColor = Color.White;
+                btn_part_modify_save.FlatStyle = FlatStyle.Standard;
+            }
+            else
+            {
+                btn_part_modify_save.BackColor = Color.Gray;
+                btn_part_modify_save.ForeColor = Color.DarkGray;
+                btn_part_modify_save.FlatStyle = FlatStyle.Flat;
+                btn_part_modify_save.FlatAppearance.BorderColor = Color.DarkGray;
+            }
+        }
+
+        private void CheckFormValidity()
+        {
+
+            int validInventory, validMax, validMin;
+
+
+            // Additional validation requirements: max > inventory > min
+            // Gets values and stores in validInventory, validMax, validMin
+
+            if (int.TryParse(tb_part_modify_inventory.Text, out validInventory) &&
+                int.TryParse(tb_part_modify_max.Text, out validMax) &&
+                int.TryParse(tb_part_modify_min.Text, out validMin))
+            {
+
+                if (validMin > validMax) //Check this first to avoid 2 messegeboxs popping up
+                {
+
+                    MessageBox.Show("Min cannot be greater than Max", "Min/Max",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Clear the textbox and make user enter valid data, this also causes form to be invalidated
+                    tb_part_modify_max.Clear();
+                    tb_part_modify_min.Clear();
+
+                    //Exit before more checks are done
+                    return;
+
+                }
+
+
+                if (validMax < validInventory || validInventory < validMin) //Check Max > Inv > Min
+                {
+
+                    MessageBox.Show("Inventory must be between Max and Min values", "Out of Range",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tb_part_modify_inventory.Clear();
+                    tb_part_modify_max.Clear();
+                    tb_part_modify_min.Clear();
+
+
+                }
+
+
+            }
+        }
+
+
+        /*--- Same validation as the Add_Part form ---*/
+        private void tb_part_modify_name_TextChanged(object sender, EventArgs e)
+        {
+
+            isNameValid = !string.IsNullOrWhiteSpace(tb_part_modify_name.Text);
+
+            ValidateHelper(tb_part_modify_name, isNameValid); //false keeps the color red-ish white for true
+
+            CheckFormComplete();
         }
 
         private void tb_part_modify_inventory_TextChanged(object sender, EventArgs e)
         {
             // Validate Inventory textbox: Must be an int
-            if (!int.TryParse(tb_part_modify_inventory.Text, out int inventory))
-            {
-                ValidateHelper(tb_part_modify_inventory, false);
+            isInvValid = int.TryParse(tb_part_modify_inventory.Text, out _);
 
-            }
-            else
-            {
-                ValidateHelper(tb_part_modify_inventory, true);
-            }
-            CheckFormValidity();
+            ValidateHelper(tb_part_modify_inventory, isInvValid);
+
+            CheckFormComplete();
         }
 
         private void tb_part_modify_priceCost_TextChanged(object sender, EventArgs e)
         {
             // Validate Price textbox: Must be a decimal
-            if (!decimal.TryParse(tb_part_modify_priceCost.Text, out decimal price))
-            {
-                ValidateHelper(tb_part_modify_priceCost, false);
+            isPriceValid = decimal.TryParse(tb_part_modify_priceCost.Text, out _);
 
-            }
-            else
-            {
-                ValidateHelper(tb_part_modify_priceCost, true);
-            }
-            CheckFormValidity();
+            ValidateHelper(tb_part_modify_priceCost, isPriceValid);
+
+            CheckFormComplete();
         }
 
         private void tb_part_modify_max_TextChanged(object sender, EventArgs e)
         {
             // Validate Max textbox: Must be an int
-            if (!int.TryParse(tb_part_modify_max.Text, out int max))
-            {
-                ValidateHelper(tb_part_modify_max, false);
+            isMaxValid = int.TryParse(tb_part_modify_max.Text, out _);
 
-            }
-            else
-            {
-                ValidateHelper(tb_part_modify_max, true);
-            }
-            CheckFormValidity();
+            ValidateHelper(tb_part_modify_max, isMaxValid);
+
+            CheckFormComplete();
         }
 
         private void tb_part_modify_min_TextChanged(object sender, EventArgs e)
         {
             // Validate Min textbox: Must be an int
-            if (!int.TryParse(tb_part_modify_min.Text, out int min))
-            {
-                ValidateHelper(tb_part_modify_min, false);
+            isMinValid = int.TryParse(tb_part_modify_min.Text, out _);
 
-            }
-            else
-            {
-                ValidateHelper(tb_part_modify_min, true);
-            }
-            CheckFormValidity();
+            ValidateHelper(tb_part_modify_min, isMinValid);
+
+            CheckFormComplete();
         }
 
         private void tb_part_modify_mi_cn_TextChanged(object sender, EventArgs e)
         {
             // Validate MachineID / Company Name depending on radio button selection either int or string
             // Its fixed finnaly
-            if (rb_part_modify_inHouse.Checked && !int.TryParse(tb_part_modify_mi_cn.Text, out int machineID))
+            if (rb_part_modify_inHouse.Checked)
             {
-                ValidateHelper(tb_part_modify_mi_cn, false);
+                isMICN_Valid = int.TryParse(tb_part_modify_mi_cn.Text, out _);
+                ValidateHelper(tb_part_modify_mi_cn, isMICN_Valid);
 
             }
-            else if (rb_part_modify_inHouse.Checked)
+            else
             {
-                ValidateHelper(tb_part_modify_mi_cn, true);
+                isMICN_Valid = !string.IsNullOrWhiteSpace(tb_part_modify_mi_cn.Text);
+                ValidateHelper(tb_part_modify_mi_cn, isMICN_Valid);
             }
-            // Must be string and not null or blank
-            if (rb_part_modify_outsourced.Checked && string.IsNullOrWhiteSpace(tb_part_modify_mi_cn.Text))
-            {
-                ValidateHelper(tb_part_modify_mi_cn, false);
 
-            }
-            else if (rb_part_modify_outsourced.Checked)
-            {
-                ValidateHelper(tb_part_modify_mi_cn, true);
-            }
-            CheckFormValidity();
+            CheckFormComplete();
         }
     }
 }

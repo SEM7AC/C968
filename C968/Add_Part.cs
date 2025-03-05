@@ -3,6 +3,13 @@
     public partial class Add_Part : Form
     {
         private int partID; //stores unique partID
+        
+        private bool isNameValid = false; //Flags for validation
+        private bool isInvValid = false;
+        private bool isPriceValid = false;
+        private bool isMaxValid = false;
+        private bool isMinValid = false;
+        private bool isMICN_Valid = false;
 
         
 
@@ -35,7 +42,18 @@
 
         private void btn_part_save_Click(object sender, EventArgs e)
         {
-            CheckFormValidity();
+            /*
+            Cross-Field validation Max > Inventory > Min and Max > Min 
+            Added this method because of testing requirements of clicking
+            the save button before these last validations were checked.
+            So much time spent here.
+            */
+            CheckFormValidity(); 
+            if (!btn_part_add_save.Enabled)
+            {
+                // Abort if the form is invalid
+                return;
+            }
 
             // Retrieve data from textboxes
             int partID = int.Parse(tb_part_add_id.Text);
@@ -72,12 +90,11 @@
 
         }
         
-        //Helper for validation code changes the backColor of the text box
-        /// <summary>
-        /// Change this section to not make it so complicated
-        /// </summary>
         
-
+        
+        /*
+        Changes the colors of the textbox if the data is valid/invalid
+        */
         public void ValidateHelper(TextBox tb, bool isValid)
         {
             if (tb != null && isValid == true)
@@ -91,86 +108,18 @@
 
         }
 
-        
+        /*
+        This checks the entire form to make sure all textboxes have data entered and they
+        should contain a valid data type that was checked in the textChanged methods. 
+        This is to enable or disable the save button until the entire form is filled in.
+         */
         public void CheckFormComplete()
         {
-            bool isComplete = true;
+            bool isComplete = isNameValid && isInvValid && isPriceValid && 
+                              isMaxValid && isMinValid && isMICN_Valid; //Global flags for validation
+                                
 
-            // Check if the Name textbox is not null or whitespace
-            if (string.IsNullOrWhiteSpace(tb_part_add_name.Text))
-            {
-                isComplete = false;
-            }
-            else
-            {
-                isComplete = isComplete && true;
-            }
-
-            // Check if the Inventory textbox contains a valid integer
-            if (!int.TryParse(tb_part_add_inventory.Text, out _))
-            {
-                isComplete = false;
-            }
-            else
-            {
-                isComplete = isComplete && true;
-            }
-
-            // Check if the Price/Cost textbox contains a valid decimal
-            if (!decimal.TryParse(tb_part_add_priceCost.Text, out _))
-            {
-                isComplete = false;
-            }
-            else
-            {
-                isComplete = isComplete && true;
-            }
-
-            // Check if the Max textbox contains a valid integer
-            if (!int.TryParse(tb_part_add_max.Text, out _))
-            {
-                isComplete = false;
-            }
-            else
-            {
-                isComplete = isComplete && true;
-            }
-
-            // Check if the Min textbox contains a valid integer
-            if (!int.TryParse(tb_part_add_min.Text, out _))
-            {
-                isComplete = false;
-            }
-            else
-            {
-                isComplete = isComplete && true;
-            }
-
-            // Check Machine ID/Company Name based on radio button selection
-            if (rb_part_add_inHouse.Checked)
-            {
-                // Validate Machine ID as an integer
-                if (!int.TryParse(tb_part_add_mi_cn.Text, out _))
-                {
-                    isComplete = false;
-                }
-                else
-                {
-                    isComplete = isComplete && true;
-                }
-            }
-            else if (rb_part_add_outsourced.Checked)
-            {
-                // Validate Company Name is not null or blank
-                if (string.IsNullOrWhiteSpace(tb_part_add_mi_cn.Text))
-                {
-                    isComplete = false;
-                }
-                else
-                {
-                    isComplete = isComplete && true;
-                }
-            }
+            
             // Enable or disable the save button based on the total form validation
             btn_part_add_save.Enabled = isComplete;
 
@@ -188,62 +137,55 @@
                 btn_part_add_save.FlatAppearance.BorderColor = Color.DarkGray;
             }
         }
+
+        /*
+        This is the final validation that happens after the save button is pressed
+        This checks for Max > Inv > Min and that Max > Min. 
+        This is called from inside the btn_part_save_Click method.
+         */
         public void CheckFormValidity()
         {
-            
-            
-            
-            
-            bool isFormValid = true;
 
-            int validInventory =0;
-            int validMax = 0;
-            int validMin = 0;
-            // Check each TextBox's validation
-            isFormValid &= !string.IsNullOrWhiteSpace(tb_part_add_name.Text);
-            isFormValid &= int.TryParse(tb_part_add_inventory.Text, out validInventory);
-            isFormValid &= decimal.TryParse(tb_part_add_priceCost.Text, out _);
-            isFormValid &= int.TryParse(tb_part_add_max.Text, out validMax);
-            isFormValid &= int.TryParse(tb_part_add_min.Text, out validMin);
+            
+            int validInventory, validMax, validMin;
 
-            if (rb_part_add_inHouse.Checked)
-            {
-                isFormValid &= int.TryParse(tb_part_add_mi_cn.Text, out _);
-            }
-            else if (rb_part_add_outsourced.Checked)
-            {
-                isFormValid &= !string.IsNullOrWhiteSpace(tb_part_add_mi_cn.Text);
-            }
 
             // Additional validation requirements: max > inventory > min
-            // All three field must be entered before this check otherwise it gets annoying....
-           
-            if (!string.IsNullOrWhiteSpace(tb_part_add_inventory.Text) &&
-                !string.IsNullOrWhiteSpace(tb_part_add_max.Text) &&
-                !string.IsNullOrWhiteSpace(tb_part_add_min.Text) &&
-                int.TryParse(tb_part_add_inventory.Text, out validInventory) &&
+            // Gets values and stores in validInventory, validMax, validMin
+
+            if (int.TryParse(tb_part_add_inventory.Text, out validInventory) &&
                 int.TryParse(tb_part_add_max.Text, out validMax) &&
-                int.TryParse(tb_part_add_min.Text, out validMin)) // if not null and parse works store in validmin
+                int.TryParse(tb_part_add_min.Text, out validMin)) 
             {
-                if (validMax < validInventory || validInventory < validMin)
+
+                if (validMin > validMax) //Check this first to avoid 2 messegeboxs popping up
                 {
-                    isFormValid = false;
+
+                    MessageBox.Show("Min cannot be greater than Max", "Min/Max",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Clear the textbox and make user enter valid data, this also causes form to be invalidated
+                    tb_part_add_max.Clear();
+                    tb_part_add_min.Clear();
+                    
+                    //Exit before more checks are done
+                    return;
+                    
+                }
+
+
+                if (validMax < validInventory || validInventory < validMin) //Check Max > Inv > Min
+                {
+                    
                     MessageBox.Show("Inventory must be between Max and Min values", "Out of Range",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tb_part_add_inventory.Clear();
                     tb_part_add_max.Clear();
-                    tb_part_add_min.Clear(); //Clear the textbox and make user enter valid data
+                    tb_part_add_min.Clear();
+                    
+                    
                 }
 
-                if (validMin > validMax)
-                {
-                    isFormValid = false;
-                    MessageBox.Show("Min cannot be greater than Max", "Min/Max",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tb_part_add_inventory.Clear();
-                    tb_part_add_max.Clear();
-                    tb_part_add_min.Clear();
-                }
+                
             }
 
 
@@ -251,86 +193,58 @@
         }
 
         
-
-        /********************************************************************************/
-        // This section contains all TextChanged events and performs validation          /
-        // Validation for each textbox happens as data is entered                        /
-        // Helper Function to change color of textbox if validation passes               /
-        // Full form validation is called after save button is pressed to validate form  /
-        // as a whole... this was in the testing requirements...                         /
-        /********************************************************************************/
+        /*
+        This section contains all TextChanged events and performs type validation upon input          
+        The global flags are set and used in the Helper method.                        
+        ValidateHelper is used to change color of textbox if validation passes               
+        Form completeness will be checked at the end of each textbox validation                       
+        */
         private void tb_part_add_name_TextChanged(object sender, EventArgs e)
         {
-
-            // Validate Name textbox: Name must not be null or blank
-            if (string.IsNullOrWhiteSpace(tb_part_add_name.Text))
-            {
-                ValidateHelper(tb_part_add_name, false); //false keeps the color red-ish
-            }
-            else
-            {
-                ValidateHelper(tb_part_add_name, true); //true will turn it white
-            }
+            isNameValid = !string.IsNullOrWhiteSpace(tb_part_add_name.Text);
+            
+            ValidateHelper(tb_part_add_name, isNameValid); //false keeps the color red-ish white for true
+           
             CheckFormComplete();
         }
 
         private void tb_part_add_inventory_TextChanged(object sender, EventArgs e)
         {
             // Validate Inventory textbox: Must be an int
-            if (!int.TryParse(tb_part_add_inventory.Text, out int inventory))
-            {
-                ValidateHelper(tb_part_add_inventory, false);
+            isInvValid = int.TryParse(tb_part_add_inventory.Text, out _);
+            
+            ValidateHelper(tb_part_add_inventory, isInvValid);
 
-            }
-            else
-            {
-                ValidateHelper(tb_part_add_inventory, true);
-            }
             CheckFormComplete();
         }
 
         private void tb_part_add_priceCost_TextChanged(object sender, EventArgs e)
         {
             // Validate Price textbox: Must be a decimal
-            if (!decimal.TryParse(tb_part_add_priceCost.Text, out decimal price))
-            {
-                ValidateHelper(tb_part_add_priceCost, false);
+            isPriceValid = decimal.TryParse(tb_part_add_priceCost.Text, out _);
 
-            }
-            else
-            {
-                ValidateHelper(tb_part_add_priceCost, true);
-            }
+            ValidateHelper(tb_part_add_priceCost, isPriceValid);
+            
             CheckFormComplete();
         }
 
         private void tb_part_add_max_TextChanged(object sender, EventArgs e)
         {
             // Validate Max textbox: Must be an int
-            if (!int.TryParse(tb_part_add_max.Text, out int max))
-            {
-                ValidateHelper(tb_part_add_max, false);
-                
-            }
-            else
-            {
-                ValidateHelper(tb_part_add_max, true);
-            }
+            isMaxValid = int.TryParse(tb_part_add_max.Text, out _);
+            
+            ValidateHelper(tb_part_add_max, isMaxValid);
+
             CheckFormComplete();
         }
 
         private void tb_part_add_min_TextChanged(object sender, EventArgs e)
         {
             // Validate Min textbox: Must be an int
-            if (!int.TryParse(tb_part_add_min.Text, out int min))
-            {
-                ValidateHelper(tb_part_add_min, false);
-                
-            }
-            else
-            {
-                ValidateHelper(tb_part_add_min, true);
-            }
+            isMinValid = int.TryParse(tb_part_add_min.Text, out _);
+            
+            ValidateHelper(tb_part_add_min, isMinValid);
+            
             CheckFormComplete();
         }
 
@@ -338,25 +252,18 @@
         {
             // Validate MachineID / Company Name depending on radio button selection either int or string
             // Its fixed finnaly
-            if (rb_part_add_inHouse.Checked && !int.TryParse(tb_part_add_mi_cn.Text, out _))
+            if (rb_part_add_inHouse.Checked)
             {
-                ValidateHelper(tb_part_add_mi_cn, false);
+                isMICN_Valid = int.TryParse(tb_part_add_mi_cn.Text, out _);
+                ValidateHelper(tb_part_add_mi_cn, isMICN_Valid);
                 
             }
-            else if (rb_part_add_inHouse.Checked)
+            else
             {
-                ValidateHelper(tb_part_add_mi_cn, true);
+                isMICN_Valid = !string.IsNullOrWhiteSpace(tb_part_add_mi_cn.Text);
+                ValidateHelper(tb_part_add_mi_cn, isMICN_Valid);
             }
-            // Must be string and not null or blank
-            if (rb_part_add_outsourced.Checked && string.IsNullOrWhiteSpace(tb_part_add_mi_cn.Text))
-            {
-                ValidateHelper(tb_part_add_mi_cn, false);
-                
-            }
-            else if (rb_part_add_outsourced.Checked)
-            {
-                ValidateHelper(tb_part_add_mi_cn, true);
-            }
+
             CheckFormComplete();
         }
     }

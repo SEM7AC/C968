@@ -54,11 +54,18 @@ namespace C968
         private void rb_part_modify_inHouse_CheckedChanged(object sender, EventArgs e)
         {
             lbl_part_modify_mi_cn.Text = "Machine ID";
+            /*Forced check when text doesnt change and radio buttons are toggled, found this bug while 
+             * testing. When radio buttons are toggled with data in the box it will bypass 
+             * tb_part_add_mi_cn_TextChanged method which is the start of the validation series and cause an 
+             * error. It will attempt to parse a string into an int. Not good!*/
+            tb_part_modify_mi_cn_TextChanged(sender, e);
+            CheckFormValidity();
         }
 
         private void rb_part_modify_outsourced_CheckedChanged(object sender, EventArgs e)
         {
             lbl_part_modify_mi_cn.Text = "Company Name";
+            CheckFormValidity();
         }
                 
         private void btn_part_modify_cancel_Click(object sender, EventArgs e)

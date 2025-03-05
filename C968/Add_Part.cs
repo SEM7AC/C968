@@ -26,6 +26,11 @@
         private void radioButton_inHouse_CheckedChanged(object sender, EventArgs e)
         {
             lbl_part_add_mi_cn.Text = "Machine ID";
+            /*Forced check when text doesnt change and radio buttons are toggled, found this bug while 
+             * testing. When radio buttons are toggled with data in the box it will bypass 
+             * tb_part_add_mi_cn_TextChanged method which is the start of the validation series and cause an 
+             * error. It will attempt to parse a string into an int. Not good!*/
+            tb_part_add_mi_cn_TextChanged(sender, e);
             CheckFormValidity();
         }
 

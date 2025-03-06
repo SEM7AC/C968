@@ -109,7 +109,20 @@ namespace C968
 
                 if (selectedPart != null)
                 {
-                    _product.removeAssociatedPart(selectedPart.PartID);
+                    DialogResult result = MessageBox.Show("Confirm Delete", "Wait", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        if (_product.removeAssociatedPart(selectedPart.PartID))
+                        {
+                            MessageBox.Show("Part removed successfully");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to remove part");
+                        }
+                    }
+                    
                 }
             }
             else

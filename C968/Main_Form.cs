@@ -130,7 +130,7 @@ namespace C968
                 int selectedIndex = dg_parts.SelectedRows[0].Index; //index of the datagrid
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
                 //finds DataBoundItem at selectedIndex and casts into Part
-
+                
 
                 if (selectedPart != null)
                 {
@@ -293,6 +293,12 @@ namespace C968
                 int selectedIndex = dg_products.SelectedRows[0].Index;
                 Product selectedProduct = dg_products.Rows[selectedIndex].DataBoundItem as Product;
 
+                if (selectedProduct.AssociatedParts.Count > 0)
+                {
+                    MessageBox.Show("Remove Associated Parts Before Deleting", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
 
                 if (selectedProduct != null)
                 {
@@ -314,6 +320,7 @@ namespace C968
                         }
                     }
                 }
+                
             }
 
             else

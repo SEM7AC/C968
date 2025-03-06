@@ -1,14 +1,11 @@
-﻿using System.Diagnostics;
-using System.Reflection.PortableExecutable;
-
-namespace C968
+﻿namespace C968
 {
     public partial class Modify_Part : Form
     {
-       
+
 
         private Part _modifyPart;
-        
+
         private bool isNameValid = false; //Flags for validation
         private bool isInvValid = false;
         private bool isPriceValid = false;
@@ -23,7 +20,7 @@ namespace C968
 
             _modifyPart = part;     //saves the reference to the part obj that is passed into the form
             Inventory = inventory;  // Inventory passed from main form.
-             
+
 
             // Load the part data into the form controls
             tb_part_modify_id.Text = part.PartID.ToString();
@@ -49,7 +46,7 @@ namespace C968
             }
         }
 
-       
+
         //Change Label depending on radio button selection
         private void rb_part_modify_inHouse_CheckedChanged(object sender, EventArgs e)
         {
@@ -67,7 +64,7 @@ namespace C968
             lbl_part_modify_mi_cn.Text = "Company Name";
             CheckFormValidity();
         }
-                
+
         private void btn_part_modify_cancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -88,10 +85,10 @@ namespace C968
             _modifyPart.Price = decimal.Parse(tb_part_modify_priceCost.Text);
             _modifyPart.Max = int.Parse(tb_part_modify_max.Text);
             _modifyPart.Min = int.Parse(tb_part_modify_min.Text);
-           
 
-             if (rb_part_modify_inHouse.Checked ) //inhouse checked
-             {
+
+            if (rb_part_modify_inHouse.Checked) //inhouse checked
+            {
                 if (_modifyPart is Inhouse ih_part) //part is inhouse type
                 {
                     // Update existing Inhouse part
@@ -107,15 +104,15 @@ namespace C968
                     int Max = _modifyPart.Max;
                     int MachineID = int.Parse(tb_part_modify_mi_cn.Text);
                     // Create new Inhouse part
-                    _modifyPart = new Inhouse(PartID,Name,Price,Inventory,Min,Max,MachineID);
-                    
-                        
-                    
+                    _modifyPart = new Inhouse(PartID, Name, Price, Inventory, Min, Max, MachineID);
+
+
+
                 }
             }
-            else if (rb_part_modify_outsourced.Checked ) //if outsoucred is checked
+            else if (rb_part_modify_outsourced.Checked) //if outsoucred is checked
             {
-            
+
                 if (_modifyPart is Outsourced os_part) //and it is an outsourced part
                 {
                     // Update existing Outsourced part

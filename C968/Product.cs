@@ -4,7 +4,7 @@ namespace C968
 {
     public class Product
     {
-        public BindingList<Part> AssociatedParts { get; set; } = new BindingList<Part>();   
+        public BindingList<Part> AssociatedParts { get; set; } = new BindingList<Part>();
 
         public int ProductID { get; set; }
 
@@ -27,8 +27,8 @@ namespace C968
         //Method to remove associated part from product returns bool
         public bool removeAssociatedPart(int id)
         {
-            var removePart = lookupAssociatedPart(id);        
-            if(removePart != null)
+            var removePart = lookupAssociatedPart(id);
+            if (removePart != null)
             {
                 AssociatedParts.Remove(removePart);
                 return true;

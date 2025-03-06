@@ -6,9 +6,9 @@ namespace C968
     public partial class Add_Product : Form
     {
         private int productID; //Unique ID for products
-        
+
         private BindingList<Part> temp_ap; //list for associated parts
-        
+
         private bool isNameValid = false; //Flags for validation
         private bool isInvValid = false;
         private bool isPriceValid = false;
@@ -60,7 +60,7 @@ namespace C968
             new_product.Price = price;
             new_product.Max = max;
             new_product.Min = min;
-            
+
             if (dg_product_add_ap.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in dg_product_add_ap.Rows)
@@ -71,7 +71,7 @@ namespace C968
             }
 
             Inventory.Products.Add(new_product);
-            
+
 
             this.Close();
         }
@@ -281,6 +281,6 @@ namespace C968
             CheckFormComplete();
         }
 
-        
+
     }
 }

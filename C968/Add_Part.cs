@@ -3,7 +3,7 @@
     public partial class Add_Part : Form
     {
         private int partID; //stores unique partID
-        
+
         private bool isNameValid = false; //Flags for validation
         private bool isInvValid = false;
         private bool isPriceValid = false;
@@ -11,12 +11,12 @@
         private bool isMinValid = false;
         private bool isMICN_Valid = false;
 
-        
+
 
         public Inventory Inventory { get; set; } //includes inventory
         public Add_Part(Inventory inventory) //Add_Part constructor
         {
-            
+
             InitializeComponent();
             Inventory = inventory;
             partID = Inventory.GeneratePartID(); //gets unique partID
@@ -53,7 +53,7 @@
             the save button before these last validations were checked.
             So much time spent here.
             */
-            CheckFormValidity(); 
+            CheckFormValidity();
             if (!btn_part_add_save.Enabled)
             {
                 // Abort if the form is invalid
@@ -94,9 +94,9 @@
             this.Close(); //Close form
 
         }
-        
-        
-        
+
+
+
         /*
         Changes the colors of the textbox if the data is valid/invalid
         */
@@ -120,11 +120,11 @@
          */
         public void CheckFormComplete()
         {
-            bool isComplete = isNameValid && isInvValid && isPriceValid && 
+            bool isComplete = isNameValid && isInvValid && isPriceValid &&
                               isMaxValid && isMinValid && isMICN_Valid; //Global flags for validation
-                                
 
-            
+
+
             // Enable or disable the save button based on the total form validation
             btn_part_add_save.Enabled = isComplete;
 
@@ -151,7 +151,7 @@
         public void CheckFormValidity()
         {
 
-            
+
             int validInventory, validMax, validMin;
 
 
@@ -160,7 +160,7 @@
 
             if (int.TryParse(tb_part_add_inventory.Text, out validInventory) &&
                 int.TryParse(tb_part_add_max.Text, out validMax) &&
-                int.TryParse(tb_part_add_min.Text, out validMin)) 
+                int.TryParse(tb_part_add_min.Text, out validMin))
             {
 
                 if (validMin > validMax) //Check this first to avoid 2 messegeboxs popping up
@@ -171,33 +171,33 @@
                     //Clear the textbox and make user enter valid data, this also causes form to be invalidated
                     tb_part_add_max.Clear();
                     tb_part_add_min.Clear();
-                    
+
                     //Exit before more checks are done
                     return;
-                    
+
                 }
 
 
                 if (validMax < validInventory || validInventory < validMin) //Check Max > Inv > Min
                 {
-                    
+
                     MessageBox.Show("Inventory must be between Max and Min values", "Out of Range",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     tb_part_add_inventory.Clear();
                     tb_part_add_max.Clear();
                     tb_part_add_min.Clear();
-                    
-                    
+
+
                 }
 
-                
+
             }
 
 
 
         }
 
-        
+
         /*
         This section contains all TextChanged events and performs type validation upon input          
         The global flags are set and used in the Helper method.                        
@@ -207,9 +207,9 @@
         private void tb_part_add_name_TextChanged(object sender, EventArgs e)
         {
             isNameValid = !string.IsNullOrWhiteSpace(tb_part_add_name.Text);
-            
+
             ValidateHelper(tb_part_add_name, isNameValid); //false keeps the color red-ish white for true
-           
+
             CheckFormComplete();
         }
 
@@ -217,7 +217,7 @@
         {
             // Validate Inventory textbox: Must be an int
             isInvValid = int.TryParse(tb_part_add_inventory.Text, out _);
-            
+
             ValidateHelper(tb_part_add_inventory, isInvValid);
 
             CheckFormComplete();
@@ -229,7 +229,7 @@
             isPriceValid = decimal.TryParse(tb_part_add_priceCost.Text, out _);
 
             ValidateHelper(tb_part_add_priceCost, isPriceValid);
-            
+
             CheckFormComplete();
         }
 
@@ -237,7 +237,7 @@
         {
             // Validate Max textbox: Must be an int
             isMaxValid = int.TryParse(tb_part_add_max.Text, out _);
-            
+
             ValidateHelper(tb_part_add_max, isMaxValid);
 
             CheckFormComplete();
@@ -247,9 +247,9 @@
         {
             // Validate Min textbox: Must be an int
             isMinValid = int.TryParse(tb_part_add_min.Text, out _);
-            
+
             ValidateHelper(tb_part_add_min, isMinValid);
-            
+
             CheckFormComplete();
         }
 
@@ -261,7 +261,7 @@
             {
                 isMICN_Valid = int.TryParse(tb_part_add_mi_cn.Text, out _);
                 ValidateHelper(tb_part_add_mi_cn, isMICN_Valid);
-                
+
             }
             else
             {

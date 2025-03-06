@@ -122,7 +122,7 @@ namespace C968
                             MessageBox.Show("Failed to remove part");
                         }
                     }
-                    
+
                 }
             }
             else

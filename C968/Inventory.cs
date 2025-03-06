@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Security.Cryptography;
 
 namespace C968
 {
@@ -49,7 +48,7 @@ namespace C968
         public Product lookupProduct(int id)
         {
             var lookupProduct = Products.FirstOrDefault(p => p.ProductID == id);
-            if(lookupProduct == null)
+            if (lookupProduct == null)
             {
                 MessageBox.Show("Product doesn't exist");
             }

@@ -1,5 +1,3 @@
-using System.Diagnostics.Eventing.Reader;
-
 namespace C968
 {
     public partial class Main_Form : Form
@@ -11,7 +9,7 @@ namespace C968
         public Main_Form()
         {
             InitializeComponent();
-            
+
             startup_helper();
 
             dg_parts.DataSource = Inventory.AllParts; //datagrid bindings
@@ -19,14 +17,14 @@ namespace C968
 
             dg_parts.ClearSelection();
             dg_products.ClearSelection();
-           
+
 
 
         }
         //Preload the inventory with some parts and products... got tired of typing this in everytime I was testing.
         public void startup_helper()
         {
-            Part part1 = new Inhouse(Inventory.GeneratePartID(), "Bolt", 5.00m, 100, 5, 150, 64 );
+            Part part1 = new Inhouse(Inventory.GeneratePartID(), "Bolt", 5.00m, 100, 5, 150, 64);
             Part part2 = new Inhouse(Inventory.GeneratePartID(), "Washer", 0.10m, 100, 5, 150, 75);
             Part part3 = new Outsourced(Inventory.GeneratePartID(), "Nut", 2.00m, 100, 5, 150, "Big Dave's LLC");
             Part part4 = new Outsourced(Inventory.GeneratePartID(), "Lever", 2700.00m, 5, 1, 10, "Larry's Levers");
@@ -43,7 +41,7 @@ namespace C968
                 Inventory = 5,
                 Min = 1,
                 Max = 10
-                
+
             };
 
             product1.addAssociatedPart(part1);
@@ -65,7 +63,7 @@ namespace C968
             Inventory.addProduct(product1);
             Inventory.addProduct(product2);
 
-            
+
             dg_parts.ClearSelection();
             dg_products.ClearSelection(); // this doesnt work and i dont know why
 
@@ -106,7 +104,7 @@ namespace C968
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
 
                 Modify_Part modifyPart = new Modify_Part(selectedPart, this.Inventory); //pass selected part to the modify_form
-                
+
 
                 modifyPart.ShowDialog();
 
@@ -130,7 +128,7 @@ namespace C968
                 int selectedIndex = dg_parts.SelectedRows[0].Index; //index of the datagrid
                 Part selectedPart = dg_parts.Rows[selectedIndex].DataBoundItem as Part;
                 //finds DataBoundItem at selectedIndex and casts into Part
-                
+
 
                 if (selectedPart != null)
                 {
@@ -208,7 +206,7 @@ namespace C968
                 dg_parts.ClearSelection();
                 if (!partFound)
                 {
-                    MessageBox.Show("Part not found!", "Search Error", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                    MessageBox.Show("Part not found!", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -216,8 +214,8 @@ namespace C968
         private void btn_products_add_Click(object sender, EventArgs e)
         {
             Add_Product add_Product = new Add_Product(this.Inventory);
-            add_Product.ShowDialog(); 
-            
+            add_Product.ShowDialog();
+
             dg_products.ClearSelection(); //refresh datagrid and clear selection
             dg_products.Refresh();
         }
@@ -250,9 +248,10 @@ namespace C968
         {
             {
                 string find = tb_products_search.Text.ToLower();
-                bool productFound= false;
+                bool productFound = false;
 
-                if (string.IsNullOrWhiteSpace(find)) {
+                if (string.IsNullOrWhiteSpace(find))
+                {
                     foreach (DataGridViewRow row in dg_products.Rows)
                     {
                         row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -272,9 +271,9 @@ namespace C968
                         else
                         {
                             row.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-                            
+
                         }
-                        
+
                     }
                     dg_products.ClearSelection();
                     if (!productFound)
@@ -282,7 +281,7 @@ namespace C968
                         MessageBox.Show("Product not found!", "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                
+
             }
         }
 
@@ -320,7 +319,7 @@ namespace C968
                         }
                     }
                 }
-                
+
             }
 
             else

@@ -48,10 +48,9 @@
         private void btn_part_save_Click(object sender, EventArgs e)
         {
             /*
-            Cross-Field validation Max > Inventory > Min and Max > Min 
-            Added this method because of testing requirements of clicking
-            the save button before these last validations were checked.
-            So much time spent here.
+            CheckFormValidity performs Cross-Field validation Max > Inventory > Min and Max > Min 
+            Added this method because of testing requirements of clicking the save button before 
+            these last validations were checked. So much time spent here.
             */
             CheckFormValidity();
             if (!btn_part_add_save.Enabled)
